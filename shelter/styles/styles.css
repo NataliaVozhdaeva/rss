@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'Georgia';
+  src: url('../assets/fonts/georgia/Georgia-Bold.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../assets/fonts/georgia/Georgia.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../assets/fonts/georgia/Georgia-Italic.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../assets/fonts/arial/Arial-ItalicMT.woff2') format('woff2'), url('../assets/fonts/arial/Arial-ItalicMT.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../assets/fonts/arial/Arial-BoldMT.woff2') format('woff2'), url('../assets/fonts/arial/Arial-BoldMT.woff') format('woff');
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../assets/fonts/arial/ArialMT.woff2') format('woff2'), url('../assets/fonts/arial/ArialMT.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --light-gray: #fafafa;
+  --middle-gray: #cdcdcd;
+  --text-gray: #ffffff;
+  --orange-border: #f1cdb3;
+  --orange-btn: #fddcc4;
+  --bg-gradient-header: radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  --bg-gradient-footer: radial-gradient(110.67% 538.64% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%), #211f20;
+  --bg-gray: #f6f6f6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-item {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--middle-gray);
+
+  transition: 0.3s;
+}
+
+.link:hover {
+  color: var(--light-gray);
+  cursor: pointer;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 52px;
+
+  color: #292929;
+
+  background: none;
+  border: 2px solid var(--orange-border);
+  border-radius: 100px;
+
+  transition: 0.3s;
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+}

@@ -3,9 +3,8 @@
 }
 
 .header-wrapper {
-  max-width: 1280px;
-  margin: auto;
-  padding: 30px 40px 0;
+  padding-top: 30px;
+  padding-bottom: 0;
 }
 
 .nav {
@@ -34,7 +33,7 @@
   font-weight: 400;
   font-size: 13px;
   letter-spacing: 0.1em;
-  color: var(--text-gray);
+  color: var(--link-gray);
 }
 
 .navigation {
@@ -59,9 +58,11 @@
 .hero-content {
   width: 460px;
 
-  display: flex;
-  flex-direction: column;
   row-gap: 42px;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .hero-title {
@@ -71,16 +72,10 @@
   font-weight: 400;
   font-size: 2.75rem;
   line-height: 130%;
-  color: var(--text-gray);
+  color: #ffffff;
 }
 
-.hero-subtitle {
-  font-family: 'Arial';
-  font-size: 15px;
-  line-height: 160%;
-
-  font-weight: 400;
-
+.hero-text {
   color: var(--middle-gray);
 }
 
@@ -92,6 +87,4 @@
 
 .hero-link:hover {
   color: currentColor;
-
-  background-color: var(--orange-btn);
 }

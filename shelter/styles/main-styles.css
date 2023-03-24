@@ -1,0 +1,106 @@
+.about-wrapper {
+  max-width: 850px;
+  margin: auto;
+
+  display: flex;
+  column-gap: 120px;
+}
+
+.about-content {
+  margin-top: 14px;
+
+  row-gap: 1.5rem;
+
+  color: var(--text-gray);
+}
+
+.pets {
+  background-color: var(--bg-gray);
+}
+
+.pets-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+}
+
+.pets-title {
+  max-width: 400px;
+  margin: auto;
+
+  text-align: center;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.pets-list {
+  display: flex;
+  column-gap: 90px;
+
+  max-width: 990px;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.pets-item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  align-items: center;
+
+  padding-bottom: 30px;
+
+  border-radius: 9px;
+  background-color: var(--light-gray);
+  list-style: none;
+}
+
+.pet-text {
+  font-size: 1.25rem;
+}
+
+.pet-btn {
+  width: 11.5rem;
+
+  font-size: 1rem;
+}
+
+.slider-btn {
+  position: absolute;
+  top: calc(50% - 26px);
+
+  width: 52px;
+  height: 52px;
+
+  border: 2px solid var(--orange-border);
+}
+
+.prev {
+  left: 0;
+
+  background: url('../assets/icons/Arrow.svg') no-repeat center;
+}
+
+.next {
+  right: 0;
+
+  background: url('../assets/icons/Arrow.svg') no-repeat center;
+  transform: rotate(180deg);
+}
+
+.all-pet-btn {
+  width: 16.3rem;
+  margin: auto;
+
+  color: var(--text-black);
+
+  background-color: var(--orange-border);
+}
+
+.all-pet-btn:hover {
+  color: var(--text-black);
+
+  background-color: var(--orange-btn);
+}

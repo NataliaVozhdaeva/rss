@@ -1,6 +1,8 @@
 .about-wrapper {
   max-width: 850px;
   margin: auto;
+  padding-left: 0;
+  padding-right: 0;
 
   display: flex;
   column-gap: 120px;
@@ -12,6 +14,10 @@
   row-gap: 1.5rem;
 
   color: var(--text-gray);
+}
+
+.about-title {
+  text-align: left;
 }
 
 .pets {
@@ -45,7 +51,7 @@
 .pets-item {
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 25px;
   align-items: center;
 
   padding-bottom: 30px;
@@ -57,6 +63,7 @@
 
 .pet-text {
   font-size: 1.25rem;
+  letter-spacing: 0.06em;
 }
 
 .pet-btn {
@@ -104,19 +111,22 @@
 }
 
 .help-wrapper {
+  padding-left: 0;
+  padding-right: 0;
+
   display: flex;
   flex-direction: column;
   row-gap: 60px;
 }
 
 .help-list {
-  max-width: 1026px;
+  max-width: 1030px;
   margin: auto;
 
   display: flex;
   flex-wrap: wrap;
   column-gap: 7.5rem;
-  row-gap: 3.5rem;
+  row-gap: 3.4rem;
   justify-content: center;
 }
 
@@ -126,6 +136,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  font-family: 'Georgia';
+  font-size: 1.25rem;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: var(--header-gray);
 
   box-sizing: border-box;
   min-width: 60px;
@@ -193,7 +209,11 @@
 .donation-content {
   max-width: 380px;
 
-  row-gap: 20px;
+  row-gap: 15px;
+}
+
+.donation-img {
+  margin: 10px 0;
 }
 
 .donation-title {
@@ -205,7 +225,7 @@
 
   width: 349px;
   height: 43px;
-  padding-left: 60px;
+  padding-left: 56px;
 
   font-family: 'Georgia';
   font-size: 20px;
@@ -228,6 +248,8 @@
 }
 
 .donation-text {
+  margin: 6px 0 0;
+
   font-family: 'Arial';
   font-style: italic;
   font-size: 12px;

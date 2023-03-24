@@ -4,9 +4,19 @@
 
 .footer-wrapper {
   padding-bottom: 0;
+  padding-top: 2.5rem;
 
   display: flex;
   column-gap: 10rem;
+}
+
+.contacts-content,
+.adress-content {
+  padding-top: 1rem;
+}
+
+.contacts-content {
+  max-width: 279px;
 }
 
 .contacts-title,
@@ -27,6 +37,8 @@
 .adress-list {
   display: flex;
   flex-direction: column;
+
+  font-family: 'Georgia';
 }
 
 .contacts-list {
@@ -44,10 +56,15 @@
 .contacts-link,
 .adress-link {
   position: relative;
+
   display: flex;
   align-items: center;
 
   min-height: 32px;
+
+  font-size: 1.25rem;
+  line-height: 115%;
+  letter-spacing: 0.06em;
 
   color: var(--orange-border);
 }

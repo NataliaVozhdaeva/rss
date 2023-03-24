@@ -80,13 +80,8 @@ body {
 
 .link {
   text-decoration: none;
-  color: var(--middle-gray);
 
   transition: 0.3s;
-}
-
-.link:hover {
-  color: var(--light-gray);
 }
 
 .btn {
@@ -112,9 +107,29 @@ body {
   transition: 0.3s;
 }
 
+.circle-btn {
+  width: 52px;
+  height: 52px;
+
+  font-family: 'Georgia';
+  font-size: 20px;
+  line-height: 115%;
+
+  border: 2px solid var(--orange-border);
+}
+
 .btn:hover {
   background-color: var(--orange-btn);
   border-color: var(--orange-btn);
+}
+
+.btn[disabled] {
+  color: var(--middle-gray);
+  border-color: var(--middle-gray);
+}
+
+.btn[disabled]:hover {
+  background-color: var(--bg-gray);
 }
 
 .wrapper {

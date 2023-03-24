@@ -1,5 +1,5 @@
 .footer {
-  background: var(--bg-gradient-footer);
+  background: url('../assets/img/noise_transparent@2x.png'), var(--bg-gradient-footer);
 }
 
 .footer-wrapper {

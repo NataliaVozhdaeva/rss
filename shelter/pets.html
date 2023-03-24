@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog shelter</title>
+
+    <link href="./assets/icons/icon-sleeping-area.png" rel="shortcut icon" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/header-styles.css" />
+    <link rel="stylesheet" href="./styles/main-styles.css" />
+    <link rel="stylesheet" href="./styles/footer-styles.css" />
+
+    <link rel="stylesheet" href="./styles/pets-styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-wrapper wrapper">
+        <nav class="nav">
+          <div class="logo">
+            <h2 class="logo-title title">Cozy House</h2>
+            <p class="logo-subtitle subtitle">Shelter for pets in Boston</p>
+          </div>
+          <ul class="navigation list">
+            <li class="navigation-item"><a href="#about" class="navigation-link link">About the shelter</a></li>
+            <li class="navigation-item active-page"><a href="#pets" class="navigation-link link">Our pets</a></li>
+            <li class="navigation-item"><a href="#help" class="navigation-link link">Help the shelter</a></li>
+            <li class="navigation-item"><a href="#contacts" class="navigation-link link">Contacts</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <section class="pets">
+        <section class="pets" id="pets">
+          <div class="pets-wrapper wrapper">
+            <h2 class="pets-title title">Our friends who<br />are looking for a house</h2>
+            <ul class="pets-list allpets list">
+              <li class="pets-item">
+                <img src="./assets/img/katrine.png" alt="katrine pussycat" class="pet-img" />
+                <p class="pet-text text">Katrine</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/jennifer.png" alt="jennifer female dog" class="pet-img" />
+                <p class="pet-text text">Jennifer</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/woody.png" alt="woody male dog" class="pet-img" />
+                <p class="pet-text text">Woody</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/sophia.png" alt="sophia female dog" class="pet-img" />
+                <p class="pet-text text">Sophia</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/timmy.png" alt="timmy tomcat" class="pet-img" />
+                <p class="pet-text text">Timmy</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/charly.png" alt="charly male dog" class="pet-img" />
+                <p class="pet-text text">Charly</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/scarlet.png" alt="scarlet female dog" class="pet-img" />
+                <p class="pet-text text">Scarlet</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/freddy.png" alt="freddy tomcat" class="pet-img" />
+                <p class="pet-text text">Freddy</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+            </ul>
+
+            <div class="pagination-container">
+              <button class="circle-btn pagination-start btn" disabled>&lt;&lt;</button>
+              <button class="circle-btn pagination-prev btn" disabled>&lt;</button>
+              <button class="circle-btn pagination-current btn">1</button>
+              <button class="circle-btn pagination-next btn">&gt;</button>
+              <button class="circle-btn pagination-finish btn">&gt;&gt;</button>
+            </div>
+          </div>
+          <div class="modal" data-modal="katrine">
+            <button class="modal__cross btn js-modal-close"></button>
+            <img src="./assets/img/modal/katrine.png" alt="katrine pussycat" class="modal-img" />
+            <div class="modal-content content">
+              <h2 class="modal-title title">Katrine</h2>
+              <p class="modal-subtitle text">Cat - British Shorthair</p>
+              <p class="modal-text text">
+                Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes
+                as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper
+                relaxations.
+              </p>
+              <ul class="modal-list list">
+                <li class="modal-item"><span class="modal-key">Age: </span> 2 months</li>
+                <li class="modal-item"><span class="modal-key">Inoculations: </span>none</li>
+                <li class="modal-item"><span class="modal-key">Diseases: </span>none</li>
+                <li class="modal-item"><span class="modal-key">Parasites: </span>none</li>
+              </ul>
+            </div>
+          </div>
+          <div class="overlay" id="overlay-modal"></div>
+        </section>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-wrapper wrapper">
+        <div class="contacts-content content">
+          <h2 class="contacts-title title">For questions and suggestions</h2>
+          <ul class="contacts-list list">
+            <li class="contacts-item"><a href="mailto:email@shelter.com" class="contacts-link link mail">email@shelter.com</a></li>
+            <li class="contacts-item"><a href="tel:+136745677554" class="contacts-link link tel">+13 674 567 75 54</a></li>
+          </ul>
+        </div>
+        <div class="adress-content content">
+          <h2 class="adress-title title">We are waiting for your visit</h2>
+          <ul class="adress-list list">
+            <li class="contacts-item"><a href="" class="adress-link link boston">1 Central Street, Boston (entrance from the store)</a></li>
+            <li class="contacts-item"><a href="" class="adress-link link london">18 South Park, London </a></li>
+          </ul>
+        </div>
+        <img src="./assets/img/footer-puppy.png" alt="dog say goodbay" class="footer-img" />
+      </div>
+    </footer>
+  </body>
+</html>

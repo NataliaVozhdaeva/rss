@@ -1,5 +1,5 @@
 .header {
-  background: var(--bg-gradient-header);
+  background: url('../assets/img/noise_transparent@2x.png'), var(--bg-gradient-header);
 }
 
 .header-wrapper {
@@ -51,9 +51,20 @@
   line-height: 160%;
 }
 
-.active-page {
+.navigation-link {
+  color: var(--middle-gray);
+}
+
+.navigation-link:hover {
   color: var(--light-gray);
+}
+
+.active-page {
   border-bottom: var(--orange-border) solid 3px;
+}
+
+.active-page > .navigation-link {
+  color: var(--light-gray);
 }
 
 .header-hero {

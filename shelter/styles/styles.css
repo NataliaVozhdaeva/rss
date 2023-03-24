@@ -166,3 +166,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}

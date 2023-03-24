@@ -11,6 +11,11 @@
   color: var(--header-gray);
 }
 
+.logo:hover > .logo-title,
+.logo:hover > .logo-subtitle {
+  text-shadow: 0 0 3px var(--orange-border);
+}
+
 .navigation-link:hover,
 .active-page > .navigation-link,
 .logo-subtitle {

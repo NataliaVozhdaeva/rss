@@ -27,8 +27,6 @@
 .pets-title {
   max-width: 400px;
   margin: auto;
-
-  text-align: center;
 }
 
 .slider-container {
@@ -103,4 +101,137 @@
   color: var(--text-black);
 
   background-color: var(--orange-btn);
+}
+
+.help-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+}
+
+.help-list {
+  max-width: 1026px;
+  margin: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 7.5rem;
+  row-gap: 3.5rem;
+  justify-content: center;
+}
+
+.help-item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  min-width: 60px;
+  height: 113px;
+  padding-top: 90px;
+
+  list-style: none;
+}
+
+.help-item::before {
+  position: absolute;
+  top: 0;
+
+  text-align: center;
+}
+
+.food::before {
+  content: url('../assets/icons/pet.svg');
+}
+
+.transportation::before {
+  content: url('../assets/icons/transportation.svg');
+}
+
+.toys::before {
+  content: url('../assets/icons/toys.svg');
+}
+
+.cups::before {
+  content: url('../assets/icons/cups.svg');
+}
+
+.shampoos::before {
+  content: url('../assets/icons/shampoos.svg');
+}
+
+.vitamins::before {
+  content: url('../assets/icons/vitamins.svg');
+}
+
+.medicines::before {
+  content: url('../assets/icons/medicines.svg');
+}
+
+.leashes::before {
+  content: url('../assets/icons/leashes.svg');
+}
+
+.sleeping::before {
+  content: url('../assets/icons/sleeping.svg');
+}
+
+.donation {
+  background-color: var(--bg-gray);
+}
+
+.donation-wrapper {
+  max-width: 995px;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.donation-content {
+  max-width: 380px;
+
+  row-gap: 20px;
+}
+
+.donation-title {
+  text-align: left;
+}
+
+.donation-btn {
+  position: relative;
+
+  width: 349px;
+  height: 43px;
+  padding-left: 60px;
+
+  font-family: 'Georgia';
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+
+  border-radius: 9px;
+}
+
+.donation-btn::after {
+  content: url('../assets/icons/credit-card.svg');
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.donation-subtitle {
+  font-family: 'Georgia';
+  letter-spacing: 0.06em;
+}
+
+.donation-text {
+  font-family: 'Arial';
+  font-style: italic;
+  font-size: 12px;
+  line-height: 150%;
+
+  color: #b2b2b2;
 }

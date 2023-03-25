@@ -1,0 +1,46 @@
+.header {
+  background: #ffffff;
+}
+
+.header-wrapper {
+  padding: 30px 2.5rem;
+}
+
+.logo-title,
+.navigation-link {
+  color: var(--header-gray);
+}
+
+.logo:hover > .logo-title,
+.logo:hover > .logo-subtitle {
+  text-shadow: 0 0 3px var(--orange-border);
+}
+
+.navigation-link:hover,
+.active-page > .navigation-link,
+.logo-subtitle {
+  color: var(--text-black);
+}
+
+.nav {
+  margin-bottom: 0;
+}
+
+.allpets {
+  max-width: 100%;
+
+  flex-wrap: wrap;
+  gap: 30px 2.5rem;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.pagination-current,
+.pagination-current:hover {
+  background-color: var(--orange-border);
+  border-color: var(--orange-border);
+}

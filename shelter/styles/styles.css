@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'Georgia';
+  src: url('../assets/fonts/georgia/Georgia-Bold.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../assets/fonts/georgia/Georgia.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../assets/fonts/georgia/Georgia-Italic.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../assets/fonts/arial/Arial-ItalicMT.woff2') format('woff2'), url('../assets/fonts/arial/Arial-ItalicMT.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../assets/fonts/arial/Arial-BoldMT.woff2') format('woff2'), url('../assets/fonts/arial/Arial-BoldMT.woff') format('woff');
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../assets/fonts/arial/ArialMT.woff2') format('woff2'), url('../assets/fonts/arial/ArialMT.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --light-gray: #fafafa;
+  --middle-gray: #cdcdcd;
+  --link-gray: #ffffff;
+  --text-gray: #4c4c4c;
+  --text-black: #292929;
+  --header-gray: #545454;
+  --orange-border: #f1cdb3;
+  --orange-btn: #fddcc4;
+  --bg-gradient-header: radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  --bg-gradient-footer: radial-gradient(110.67% 538.64% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%), #211f20;
+  --bg-gray: #f6f6f6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-item {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.btn {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 52px;
+
+  font-family: 'Georgia';
+
+  font-size: 17px;
+  line-height: 130%;
+  color: var(--text-black);
+  letter-spacing: 0.06em;
+
+  background: none;
+  border: 2px solid var(--orange-border);
+  border-radius: 100px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.circle-btn {
+  width: 52px;
+  height: 52px;
+
+  font-family: 'Georgia';
+  font-size: 20px;
+  line-height: 115%;
+
+  border: 2px solid var(--orange-border);
+}
+
+.btn:hover {
+  background-color: var(--orange-btn);
+  border-color: var(--orange-btn);
+}
+
+.btn[disabled] {
+  color: var(--middle-gray);
+  border-color: var(--middle-gray);
+}
+
+.btn[disabled]:hover {
+  background-color: var(--bg-gray);
+}
+
+.wrapper {
+  max-width: 1280px;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 5rem 2.5rem 6.25rem;
+}
+
+.title {
+  margin: 0;
+
+  font-family: 'Georgia';
+
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  text-align: center;
+
+  color: var(--header-gray);
+}
+
+.text {
+  margin: 0;
+
+  font-family: 'Arial';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 160%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}

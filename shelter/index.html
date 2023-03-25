@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Dog shelter</title>
+
+    <link href="./assets/icons/icon-sleeping-area.png" rel="shortcut icon" >
+    <link rel="stylesheet" href="./styles/styles.css" >
+    <link rel="stylesheet" href="./styles/header-styles.css" >
+    <link rel="stylesheet" href="./styles/main-styles.css" >
+    <link rel="stylesheet" href="./styles/footer-styles.css" >
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-wrapper wrapper">
+        <nav class="nav">
+          <a href="#" class="logo link">
+            <h2 class="logo-title title">Cozy House</h2>
+            <p class="logo-subtitle subtitle">Shelter for pets in Boston</p>
+          </a>
+          <ul class="navigation list">
+            <li class="navigation-item active-page"><a href="#about" class="navigation-link link">About the shelter</a></li>
+            <li class="navigation-item"><a href="./pets.html" class="navigation-link link">Our pets</a></li>
+            <li class="navigation-item"><a href="#help" class="navigation-link link">Help the shelter</a></li>
+            <li class="navigation-item"><a href="#contacts" class="navigation-link link">Contacts</a></li>
+          </ul>
+        </nav>
+        <div class="header-hero">
+          <div class="hero-content content">
+            <h1 class="hero-title title">Not only people need&nbsp;a&nbsp;house</h1>
+            <p class="hero-text text">
+              We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody
+              else in the world, you will see!
+            </p>
+            <a href="#pets" class="hero-link link btn">Make a friend</a>
+          </div>
+          <img
+            src="./assets/img/start-screen-puppy.png"
+            alt="Charly is waiting for you"
+            class="hero-img"
+            title="Scarlett is waiting for you"
+            width="698" >
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="about" id="about">
+        <div class="about-wrapper wrapper">
+          <img src="./assets/img/about-pets.png" alt="ours pets" class="about-pets" width="300" >
+          <div class="about-content content">
+            <h2 class="about-title title">About the shelter “Cozy&nbsp;House”</h2>
+            <p class="about-text text">
+              Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will
+              continue to live with us and will be waiting for a lucky chance to become dearly loved.
+            </p>
+            <p class="about-text text">
+              We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We
+              are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking
+              care of the animals, they become attached to the pets and would hardly ever leave them alone.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="pets" id="pets">
+        <div class="pets-wrapper wrapper">
+          <h2 class="pets-title title">Our friends who<br >are looking for a house</h2>
+          <div class="slider-container">
+            <ul class="pets-list list js-slider">
+              <li class="pets-item">
+                <img src="./assets/img/katrine.png" alt="katrine pussycat" class="pet-img" >
+                <p class="pet-text text">Katrine</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/jennifer.png" alt="jennifer female dog" class="pet-img" >
+                <p class="pet-text text">Jennifer</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/woody.png" alt="woody male dog" class="pet-img" >
+                <p class="pet-text text">Woody</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/sophia.png" alt="sophia female dog" class="pet-img" >
+                <p class="pet-text text">Sophia</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/timmy.png" alt="timmy tomcat" class="pet-img" >
+                <p class="pet-text text">Timmy</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/charly.png" alt="charly male dog" class="pet-img" >
+                <p class="pet-text text">Charly</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/scarlet.png" alt="scarlet female dog" class="pet-img" >
+                <p class="pet-text text">Scarlet</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+              <li class="pets-item">
+                <img src="./assets/img/freddy.png" alt="freddy tomcat" class="pet-img" >
+                <p class="pet-text text">Freddy</p>
+                <button class="pet-btn btn">Learn more</button>
+              </li>
+            </ul>
+            <div class="btn-container">
+              <button class="slider-btn circle-btn prev btn"></button>
+              <button class="slider-btn circle-btn next btn"></button>
+            </div>
+          </div>
+          <a href="./pets.html" class="all-pet-btn btn link">Get to know the rest</a>
+        </div>
+        <div class="modal" data-modal="katrine">
+          <button class="modal__cross btn js-modal-close"></button>
+          <img src="./assets/img/modal/katrine.png" alt="katrine pussycat" class="modal-img" >
+          <div class="modal-content content">
+            <h2 class="modal-title title">Katrine</h2>
+            <p class="modal-subtitle text">Cat - British Shorthair</p>
+            <p class="modal-text text">
+              Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as
+              long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.
+            </p>
+            <ul class="modal-list list">
+              <li class="modal-item"><span class="modal-key">Age: </span> 2 months</li>
+              <li class="modal-item"><span class="modal-key">Inoculations: </span>none</li>
+              <li class="modal-item"><span class="modal-key">Diseases: </span>none</li>
+              <li class="modal-item"><span class="modal-key">Parasites: </span>none</li>
+            </ul>
+          </div>
+        </div>
+        <div class="overlay" id="overlay-modal"></div>
+      </section>
+      <section class="help" id="help">
+        <div class="help-wrapper wrapper">
+          <h2 class="help-tite title">How you can help<br >our shelter</h2>
+          <ul class="help-list list">
+            <li class="help-item food">Pet food</li>
+            <li class="help-item transportation">Transportation</li>
+            <li class="help-item toys">Toys</li>
+            <li class="help-item cups">Bowls and cups</li>
+            <li class="help-item shampoos">Shampoos</li>
+            <li class="help-item vitamins">Vitamins</li>
+            <li class="help-item medicines">Medicines</li>
+            <li class="help-item leashes">Collars / leashes</li>
+            <li class="help-item sleeping">Sleeping areas</li>
+          </ul>
+        </div>
+      </section>
+      <section class="donation">
+        <div class="donation-wrapper wrapper">
+          <img src="./assets/img/donation-dog.png" alt="pet asking for donation" class="donation-img" width="505" >
+          <div class="donation-content content">
+            <h2 class="donation-title title">You can also<br >make a donation</h2>
+            <p class="donation-subtitle text">Name of the bank / Type of bank account</p>
+            <a href="#" class="donation-btn btn link">8380 2880 8028 8791 7435</a>
+            <p class="donation-text">
+              Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac
+              diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" id="contacts">
+      <div class="footer-wrapper wrapper">
+        <div class="contacts-content content">
+          <h2 class="contacts-title title">For questions and suggestions</h2>
+          <ul class="contacts-list list">
+            <li class="contacts-item"><a href="mailto:email@shelter.com" class="contacts-link link mail">email@shelter.com</a></li>
+            <li class="contacts-item"><a href="tel:+136745677554" class="contacts-link link tel">+13 674 567 75 54</a></li>
+          </ul>
+        </div>
+        <div class="adress-content content">
+          <h2 class="adress-title title">We are waiting for your visit</h2>
+          <ul class="adress-list list">
+            <li class="contacts-item">
+              <a href="https://goo.gl/maps/rcfiveU5qvauBzJ1A" target="_blank" class="adress-link link boston"
+                >1 Central Street, Boston (entrance from the store)</a
+              >
+            </li>
+            <li class="contacts-item">
+              <a href="https://goo.gl/maps/rcfiveU5qvauBzJ1A" target="_blank" class="adress-link link london">18 South Park, London </a>
+            </li>
+          </ul>
+        </div>
+        <img src="./assets/img/footer-puppy.png" alt="dog say goodbay" class="footer-img" >
+      </div>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>

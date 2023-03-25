@@ -1,0 +1,105 @@
+.footer {
+  background: url('../assets/img/noise_transparent@2x.png'), var(--bg-gradient-footer);
+}
+
+.footer-wrapper {
+  padding-bottom: 0;
+  padding-top: 2.5rem;
+
+  display: flex;
+  column-gap: 10rem;
+}
+
+.contacts-content,
+.adress-content {
+  padding-top: 1rem;
+}
+
+.contacts-content {
+  max-width: 279px;
+}
+
+.contacts-title,
+.adress-title {
+  color: #ffffff;
+  text-align: left;
+}
+
+.contacts-title {
+  margin-bottom: 2.5rem;
+}
+
+.adress-title {
+  margin-bottom: 34px;
+}
+
+.contacts-list,
+.adress-list {
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Georgia';
+}
+
+.contacts-list {
+  row-gap: 2.5rem;
+}
+
+.adress-list {
+  row-gap: 32px;
+}
+
+.contacts-item {
+  list-style: none;
+}
+
+.contacts-link,
+.adress-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 32px;
+
+  font-size: 1.25rem;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+
+  color: var(--orange-border);
+}
+
+.contacts-link {
+  padding-left: 60px;
+}
+
+.adress-link {
+  padding-left: 42px;
+}
+
+.adress-link::before {
+  content: url('../assets/icons/icon-marker.svg');
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mail::before {
+  content: url('../assets/icons/icon-email.svg');
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tel::before {
+  content: url('../assets/icons/icon-phone.svg');
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contacts-link:hover,
+.adress-link:hover {
+  color: var(--orange-btn);
+  text-shadow: 0 0 3px white;
+}

@@ -130,6 +130,7 @@ body {
 
 .btn[disabled]:hover {
   background-color: var(--bg-gray);
+  cursor: auto;
 }
 
 .wrapper {

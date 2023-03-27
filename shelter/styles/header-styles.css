@@ -61,11 +61,11 @@
 
 .active-page {
   border-bottom: var(--orange-border) solid 3px;
-  cursor: auto;
 }
 
 .active-page > .navigation-link {
   color: var(--light-gray);
+  cursor: default;
 }
 
 .header-hero {

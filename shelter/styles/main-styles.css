@@ -38,6 +38,13 @@
   }
 }
 
+@media only screen and (max-width: 390px) {
+  .about-pets {
+    width: 81.25%;
+    padding-top: 42px;
+  }
+}
+
 .pets {
   background-color: var(--bg-gray);
 }
@@ -160,6 +167,34 @@
   }
 }
 
+@media only screen and (max-width: 730px) {
+  .slider-container {
+    width: 93.75%;
+  }
+
+  .pets-list {
+    max-width: 270px;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .slider-btn {
+    top: calc(100% + 20px);
+  }
+
+  .prev {
+    left: 58px;
+  }
+
+  .next {
+    right: 58px;
+  }
+
+  .all-pet-btn {
+    margin-top: 42px;
+  }
+}
+
 .help-wrapper {
   padding-left: 0;
   padding-right: 0;
@@ -178,24 +213,6 @@
   column-gap: 7.5rem;
   row-gap: 3.4rem;
   justify-content: center;
-}
-
-@media only screen and (max-width: 1080px) {
-  .help-list {
-    max-width: 90%;
-    justify-content: space-around;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .help-list {
-    max-width: 630px;
-    gap: 55px 60px;
-  }
-
-  .help-item {
-    width: 170px;
-  }
 }
 
 .help-item {
@@ -217,6 +234,37 @@
   padding-top: 90px;
 
   list-style: none;
+}
+
+@media only screen and (max-width: 1080px) {
+  .help-list {
+    max-width: 90%;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .help-list {
+    max-width: 630px;
+    gap: 55px 60px;
+  }
+
+  .help-item {
+    width: 170px;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .help-list {
+    max-width: 290px;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .help-item {
+    width: 130px;
+    font-size: 15px;
+  }
 }
 
 .help-item::before {
@@ -343,6 +391,36 @@
   line-height: 150%;
 
   color: #b2b2b2;
+}
+
+@media only screen and (max-width: 465px) {
+  .donation-img {
+    width: 81.25%;
+  }
+
+  .donation-content {
+    width: 93.75%;
+    align-items: center;
+  }
+
+  .donation-title,
+  .donation-subtitle {
+    text-align: center;
+    color: var(--header-gray);
+    letter-spacing: 0;
+  }
+
+  .donation-btn {
+    width: 281px;
+    padding: 10px 15px 10px 55px;
+
+    font-size: 15px;
+    color: var(--header-gray);
+  }
+
+  .donation-text {
+    text-align: justify;
+  }
 }
 
 /* modal-window */

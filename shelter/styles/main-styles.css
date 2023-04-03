@@ -40,8 +40,18 @@
 
 @media only screen and (max-width: 390px) {
   .about-pets {
-    width: 81.25%;
+    width: 260px;
     padding-top: 42px;
+  }
+
+  .about-title {
+    text-align: center;
+  }
+
+  .about-content {
+    row-gap: 1.4rem;
+    padding: 0 9px;
+    text-align: justify;
   }
 }
 
@@ -183,15 +193,21 @@
   }
 
   .prev {
-    left: 58px;
+    left: 49px;
   }
 
   .next {
-    right: 58px;
+    right: 49px;
   }
 
   .all-pet-btn {
-    margin-top: 42px;
+    margin-top: 73px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .pets-wrapper {
+    row-gap: 42px;
   }
 }
 
@@ -271,43 +287,75 @@
   position: absolute;
   top: 0;
 
+  width: 60px;
+  height: 60px;
+
   text-align: center;
 }
 
 .food::before {
-  content: url('../assets/icons/pet.svg');
+  content: '';
+  background-image: url('../assets/icons/pet.svg');
 }
 
 .transportation::before {
-  content: url('../assets/icons/transportation.svg');
+  content: '';
+  background-image: url('../assets/icons/transportation.svg');
 }
 
 .toys::before {
-  content: url('../assets/icons/toys.svg');
+  content: '';
+  background-image: url('../assets/icons/toys.svg');
 }
 
 .cups::before {
-  content: url('../assets/icons/cups.svg');
+  content: '';
+  background-image: url('../assets/icons/cups.svg');
 }
 
 .shampoos::before {
-  content: url('../assets/icons/shampoos.svg');
+  content: '';
+  background-image: url('../assets/icons/shampoos.svg');
 }
 
 .vitamins::before {
-  content: url('../assets/icons/vitamins.svg');
+  content: '';
+  background-image: url('../assets/icons/vitamins.svg');
 }
 
 .medicines::before {
-  content: url('../assets/icons/medicines.svg');
+  content: '';
+  background-image: url('../assets/icons/medicines.svg');
 }
 
 .leashes::before {
-  content: url('../assets/icons/leashes.svg');
+  content: '';
+  background-image: url('../assets/icons/leashes.svg');
 }
 
 .sleeping::before {
-  content: url('../assets/icons/sleeping.svg');
+  content: '';
+  background-image: url('../assets/icons/sleeping.svg');
+}
+
+@media only screen and (max-width: 465px) {
+  .help-wrapper {
+    row-gap: 39px;
+  }
+
+  .help-list {
+    gap: 4px;
+  }
+
+  .help-item {
+    padding-top: 71px;
+  }
+
+  .help-item::before {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+  }
 }
 
 .donation {
@@ -407,6 +455,9 @@
   .donation-subtitle {
     text-align: center;
     color: var(--header-gray);
+  }
+
+  .donation-subtitle {
     letter-spacing: 0;
   }
 
@@ -420,6 +471,25 @@
 
   .donation-text {
     text-align: justify;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .donation-wrapper {
+    padding-top: 17px;
+  }
+
+  .donation-content {
+    row-gap: 19px;
+  }
+
+  .donation-text {
+    margin: 0;
+  }
+
+  .donation-img {
+    width: 260px;
+    padding-top: 45px;
   }
 }
 

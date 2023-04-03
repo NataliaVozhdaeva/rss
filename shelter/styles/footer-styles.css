@@ -126,3 +126,32 @@
     padding-top: 0;
   }
 }
+
+@media only screen and (max-width: 390px) {
+  .footer-wrapper {
+    row-gap: 40px;
+    padding: 30px 10px 0;
+  }
+
+  .contacts-title,
+  .adress-title {
+    text-align: center;
+  }
+
+  .contacts-list {
+    align-items: center;
+  }
+
+  .adress-list {
+    row-gap: 38px;
+  }
+
+  .footer-img {
+    width: 260px;
+  }
+
+  .adress-title {
+    width: 270px;
+    margin: 0 auto 38px;
+  }
+}

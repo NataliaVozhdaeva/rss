@@ -103,3 +103,24 @@
   color: var(--orange-btn);
   text-shadow: 0 0 3px white;
 }
+
+.footer-img {
+  min-width: 25%;
+  height: auto;
+}
+
+@media only screen and (max-width: 1180px) {
+  .footer-wrapper {
+    flex-wrap: wrap;
+    row-gap: 65px;
+    justify-content: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    column-gap: 0;
+  }
+
+  .contacts-content,
+  .adress-content {
+    max-width: 320px;
+  }
+}

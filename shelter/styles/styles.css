@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Georgia';
-  src: url('../assets/fonts/georgia/Georgia-Bold.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia-Bold.woff') format('woff');
+  src: url('../assets/fonts/georgia/Georgia-Bold.woff2') format('woff2'),
+    url('../assets/fonts/georgia/Georgia-Bold.woff') format('woff');
   font-weight: 700;
   font-style: bold;
   font-display: swap;
@@ -8,7 +9,8 @@
 
 @font-face {
   font-family: 'Georgia';
-  src: url('../assets/fonts/georgia/Georgia.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia.woff') format('woff');
+  src: url('../assets/fonts/georgia/Georgia.woff2') format('woff2'),
+    url('../assets/fonts/georgia/Georgia.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +18,8 @@
 
 @font-face {
   font-family: 'Georgia';
-  src: url('../assets/fonts/georgia/Georgia-Italic.woff2') format('woff2'), url('../assets/fonts/georgia/Georgia-Italic.woff') format('woff');
+  src: url('../assets/fonts/georgia/Georgia-Italic.woff2') format('woff2'),
+    url('../assets/fonts/georgia/Georgia-Italic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -24,7 +27,8 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../assets/fonts/arial/Arial-ItalicMT.woff2') format('woff2'), url('../assets/fonts/arial/Arial-ItalicMT.woff') format('woff');
+  src: url('../assets/fonts/arial/Arial-ItalicMT.woff2') format('woff2'),
+    url('../assets/fonts/arial/Arial-ItalicMT.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -32,7 +36,8 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../assets/fonts/arial/Arial-BoldMT.woff2') format('woff2'), url('../assets/fonts/arial/Arial-BoldMT.woff') format('woff');
+  src: url('../assets/fonts/arial/Arial-BoldMT.woff2') format('woff2'),
+    url('../assets/fonts/arial/Arial-BoldMT.woff') format('woff');
   font-weight: 700;
   font-style: bold;
   font-display: swap;
@@ -40,7 +45,8 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../assets/fonts/arial/ArialMT.woff2') format('woff2'), url('../assets/fonts/arial/ArialMT.woff') format('woff');
+  src: url('../assets/fonts/arial/ArialMT.woff2') format('woff2'),
+    url('../assets/fonts/arial/ArialMT.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -138,6 +144,18 @@ body {
   box-sizing: border-box;
   margin: auto;
   padding: 5rem 2.5rem 6.25rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    padding: 5rem 30px 6.25rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-link {
+    align-self: center;
+  }
 }
 
 .title {

@@ -21,14 +21,21 @@
   .about-wrapper {
     max-width: 90%;
   }
-
-  /*  .about-content {
-    max-width: 330px;
-  } */
 }
 
 .about-title {
   text-align: left;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-pets {
+    order: 2;
+    padding-top: 80px;
+  }
+
+  .about-content {
+    margin-top: 0;
+  }
 }
 
 .pets {
@@ -142,6 +149,17 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .slider-container {
+    width: 708px;
+  }
+
+  .pets-list {
+    max-width: 580px;
+    column-gap: 40px;
+  }
+}
+
 .help-wrapper {
   padding-left: 0;
   padding-right: 0;
@@ -166,6 +184,17 @@
   .help-list {
     max-width: 90%;
     justify-content: space-around;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .help-list {
+    max-width: 630px;
+    gap: 55px 60px;
+  }
+
+  .help-item {
+    width: 170px;
   }
 }
 
@@ -264,6 +293,13 @@
 
 .donation-img {
   margin: 10px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .donation-img {
+    padding-top: 60px;
+    margin: 0;
+  }
 }
 
 .donation-title {

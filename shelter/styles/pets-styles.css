@@ -31,6 +31,7 @@
 
   flex-wrap: wrap;
   gap: 30px 2.5rem;
+  justify-content: center;
 }
 
 .pagination-container {
@@ -43,4 +44,23 @@
 .pagination-current:hover {
   background-color: var(--orange-border);
   border-color: var(--orange-border);
+}
+
+@media only screen and (max-width: 768px) {
+  .header-wrapper {
+    padding: 30px;
+  }
+
+  .pets-wrapper {
+    padding-bottom: 78px;
+    row-gap: 30px;
+  }
+
+  .allpets {
+    padding-bottom: 11px;
+  }
+
+  .pets-item:nth-last-child(-n + 2) {
+    display: none;
+  }
 }

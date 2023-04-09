@@ -7,7 +7,6 @@ const body = document.querySelector('html');
 const overlay = document.querySelector('.overlay');
 
 const toggleMobileMenu = () => {
-  console.log('menu click');
   navigation.style.transition = 'transform 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86)';
   burger.classList.toggle('clicked');
   navigation.classList.toggle('show');
@@ -26,3 +25,29 @@ document.addEventListener('click', (e) => {
     toggleMobileMenu();
   }
 });
+
+//slider
+
+/* const btnNext = document.querySelector('.next');
+const btnPrev = document.querySelector('.prev');
+const feeedbackContent = document.querySelectorAll('.feedback-item');
+let activeSlideNumber = 0;
+
+function showFeedback() {
+  feeedbackContent[activeSlideNumber].classList.remove('non-displayed');
+}
+
+showFeedback(activeSlideNumber);
+
+btnNext.addEventListener('click', () => {
+  feeedbackContent[activeSlideNumber].classList.add('non-displayed');
+  activeSlideNumber = (activeSlideNumber + 1) % feeedbackContent.length;
+  showFeedback(activeSlideNumber);
+});
+
+btnPrev.addEventListener('click', () => {
+  feeedbackContent[activeSlideNumber].classList.add('non-displayed');
+  activeSlideNumber = (activeSlideNumber + feeedbackContent.length - 1) % feeedbackContent.length;
+  showFeedback(activeSlideNumber);
+});
+ */

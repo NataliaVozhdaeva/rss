@@ -596,6 +596,6 @@
   visibility: visible;
 }
 
-.body.stop-scroll {
+html.stop-scroll {
   overflow: hidden;
 }

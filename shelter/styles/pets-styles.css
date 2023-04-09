@@ -51,6 +51,18 @@
     padding: 30px;
   }
 
+  .burger-menu {
+    border-top: solid 2px #000000;
+    border-bottom: solid 2px #000000;
+    background: linear-gradient(transparent 45%, #000000 45%, #000000 55%, transparent 55%);
+  }
+
+  .burger-menu.clicked {
+    border-top: solid 2px var(--orange-border);
+    border-bottom: solid 2px var(--orange-border);
+    background: linear-gradient(transparent 45%, var(--orange-border) 45%, var(--orange-border) 55%, transparent 55%);
+  }
+
   .pets-wrapper {
     padding-bottom: 78px;
     row-gap: 30px;
@@ -72,12 +84,6 @@
 
   .nav {
     padding: 0;
-  }
-
-  .burger-menu {
-    border-top: solid 2px #000000;
-    border-bottom: solid 2px #000000;
-    background: linear-gradient(transparent 45%, #000000 45%, #000000 55%, transparent 55%);
   }
 
   .pets-wrapper {

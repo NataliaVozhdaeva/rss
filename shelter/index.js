@@ -3,12 +3,16 @@
 const burger = document.querySelector('.burger-menu');
 const menuItems = document.querySelectorAll('.navigation-item');
 const navigation = document.querySelector('.navigation');
+const body = document.querySelector('html');
+const overlay = document.querySelector('.overlay');
 
 const toggleMobileMenu = () => {
   console.log('menu click');
   navigation.style.transition = 'transform 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86)';
-  //burger.classList.toggle('clicked');
+  burger.classList.toggle('clicked');
   navigation.classList.toggle('show');
+  body.classList.toggle('stop-scroll');
+  overlay.classList.toggle('active');
 };
 
 burger.addEventListener('click', toggleMobileMenu);

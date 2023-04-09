@@ -1,23 +1,24 @@
-console.log(
-  'Вёрстка страницы Main соответствует макету при ширине экрана 1280px: +14' +
-    '\n' +
-    'Вёрстка страницы Main соответствует макету при ширине экрана 768px: +14' +
-    '\n ' +
-    'Вёрстка страницы Main соответствует макету при ширине экрана 320px: +14' +
-    '\n ' +
-    'Вёрстка страницы Pets соответствует макету при ширине экрана 1280px' +
-    '\n' +
-    'Вёрстка страницы Pets соответствует макету при ширине экрана 768px' +
-    '\n' +
-    'Вёрстка страницы Pets соответствует макету при ширине экрана 320px' +
-    '\n' +
-    'Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки, справа от отдельных блоков не появляются белые поля. Весь контент страницы при этом сохраняется: не обрезается и не удаляется: +20' +
-    '\n' +
-    'Верстка резиновая: при плавном изменении размера экрана от 1280px до 320px верстка подстраивается под этот размер, элементы верстки меняют свои размеры и расположение +8' +
-    '\n' +
-    'При ширине экрана меньше 768px на обеих страницах меню в хедере скрывается, появляется иконка бургер-меню: +4' +
-    '\n' +
-    'Верстка обеих страниц валидная +8' +
-    '\n' +
-    'ИТОГО ВСЕГО 100))'
-);
+//mobile-menu
+
+const burger = document.querySelector('.burger-menu');
+const menuItems = document.querySelectorAll('.navigation-item');
+const navigation = document.querySelector('.navigation');
+
+const toggleMobileMenu = () => {
+  console.log('menu click');
+  navigation.style.transition = 'transform 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86)';
+  //burger.classList.toggle('clicked');
+  navigation.classList.toggle('show');
+};
+
+burger.addEventListener('click', toggleMobileMenu);
+
+menuItems.forEach((item) => {
+  item.addEventListener('click', toggleMobileMenu);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target != navigation && navigation.classList.contains('show') && e.target != burger) {
+    toggleMobileMenu();
+  }
+});

@@ -1,5 +1,5 @@
 async function getData() {
-  const response = await fetch('./shelter/assets/pets.json');
+  const response = await fetch('../shelter/assets/pets.json');
   petsArr = await response.json();
 
   return petsArr;
@@ -30,7 +30,7 @@ async function createModal() {
     el.setAttribute('data-modal', petsArr[i].name);
 
     const img = el.querySelector('.modal-img');
-    img.setAttribute('src', `../assets/img/modal/${petsArr[i].name.toLowerCase()}.png`);
+    img.setAttribute('src', `./assets/img/modal/${petsArr[i].name.toLowerCase()}.png`);
     img.setAttribute('alt', petsArr[i].breed + ' ' + petsArr[i].name);
 
     el.querySelector('.modal-title').textContent = petsArr[i].name;

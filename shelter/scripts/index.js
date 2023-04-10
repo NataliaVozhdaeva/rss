@@ -1,5 +1,5 @@
 async function getData() {
-  const response = await fetch('../assets/pets.json');
+  const response = await fetch('./shelter/assets/pets.json');
   petsArr = await response.json();
 
   return petsArr;

@@ -5,6 +5,101 @@ async function getData() {
   return petsArr;
 }
 
+const btnNext = document.querySelector('.next');
+const btnPrev = document.querySelector('.prev');
+const slider = document.querySelector('.js-slider');
+
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+let prevArr = [];
+let currentArr = [];
+let nextArr = [];
+
+function geterateArr(arr1, arr2) {
+  for (let i = 0; i < 3; i++) {
+    let el = getRandom(0, 8);
+    if (!arr1.includes(el) && !arr2.includes(el)) {
+      arr1.push(el);
+    } else {
+      i--;
+    }
+  }
+}
+
+function init() {
+  geterateArr(nextArr, currentArr);
+
+  currentArr = nextArr;
+  nextArr = [];
+
+  geterateArr(nextArr, currentArr);
+
+  pastArr = currentArr;
+  currentArr = nextArr;
+  nextArr = [];
+
+  geterateArr(nextArr, currentArr);
+}
+
+init();
+
+function forward() {
+  pastArr = currArr;
+  currArr = nextArr;
+  nextArr = [];
+  geterateArr(nextArr, currentArr);
+}
+
+function backward() {
+  nextArr = currentArr;
+  currentArr = pastArr;
+  pastArr = [];
+  geterateArr(pastArr, currentArr);
+}
+
+function changeToBackward() {
+  let temporaryArr = currentArr;
+  currentArr = pastArr;
+  pastArr = temporaryArr;
+  nextArr = [];
+  geterateArr(nextArr, currentArr);
+}
+
+function changeToForward() {
+  let temporaryArr = currentArr;
+  currentArr = nextArr;
+  nextArr = temporaryArr;
+  pastArr = [];
+}
+
+const moveLeft = () => {
+  slider.classList.add('transition-left');
+  btnPrev.removeEventListener('click', moveLeft);
+  btnNext.removeEventListener('click', moveRight);
+};
+
+const moveRight = () => {
+  slider.classList.add('transition-right');
+  btnNext.removeEventListener('click', moveRight);
+  btnPrev.removeEventListener('click', moveLeft);
+};
+
+btnNext.addEventListener('click', moveRight);
+btnPrev.addEventListener('click', moveLeft);
+
+slider.addEventListener('animationend', (animationEvent) => {
+  slider.classList.remove('transition-left');
+  slider.classList.remove('transition-right');
+  btnNext.addEventListener('click', moveRight);
+  btnPrev.addEventListener('click', moveLeft);
+});
+
+console.log(pastArr, currentArr, nextArr);
+
 async function createCard() {
   const petsArr = await getData();
   const petsCards = document.querySelectorAll('.pets-item');

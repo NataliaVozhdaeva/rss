@@ -60,6 +60,8 @@
 }
 
 .pets-wrapper {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   row-gap: 60px;
@@ -72,23 +74,27 @@
 
 .slider-container {
   position: relative;
-}
-
-.pets-list {
-  display: flex;
-  column-gap: 90px;
 
   max-width: 990px;
+  max-height: 435px;
+
   margin: auto;
   overflow-x: hidden;
 }
 
-@media only screen and (max-width: 1180px) {
-  .pets-list {
-    column-gap: 30px;
+.pets-list {
+  position: relative;
+  left: -990px;
 
-    max-width: 880px;
-  }
+  display: flex;
+  margin: auto;
+}
+
+.item-right,
+.item-active,
+.item-left {
+  display: flex;
+  column-gap: 90px;
 }
 
 .pets-item {
@@ -140,13 +146,13 @@
 }
 
 .prev {
-  left: 0;
+  left: 40px;
 
   background: url('../assets/icons/Arrow.svg') no-repeat center;
 }
 
 .next {
-  right: 0;
+  right: 40px;
 
   background: url('../assets/icons/Arrow.svg') no-repeat center;
   transform: rotate(180deg);
@@ -167,29 +173,94 @@
   background-color: var(--orange-btn);
 }
 
-@media only screen and (max-width: 1080px) {
-  .pets-list {
-    max-width: 600px;
+@keyframes move-right {
+  from {
+    left: -990px;
+  }
+  to {
+    left: -1980px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@keyframes move-left {
+  from {
+    left: -990px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@media only screen and (max-width: 1180px) {
   .slider-container {
-    width: 708px;
+    max-width: 880px;
   }
 
   .pets-list {
-    max-width: 580px;
-    column-gap: 40px;
+    left: -880px;
+  }
+
+  .item-right,
+  .item-active,
+  .item-left {
+    column-gap: 35px;
+  }
+
+  @keyframes move-right {
+    from {
+      left: -880px;
+    }
+    to {
+      left: -1760px;
+    }
+  }
+
+  @keyframes move-left {
+    from {
+      left: -880px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: 968px) {
+  .slider-container {
+    max-width: 708px;
+  }
+
+  .pets-list {
+    left: -708px;
+  }
+
+  .item-right,
+  .item-active,
+  .item-left {
+    column-gap: 17.25%;
+  }
+
+  @keyframes move-right {
+    from {
+      left: -708px;
+    }
+    to {
+      left: -1416px;
+    }
+  }
+
+  @keyframes move-left {
+    from {
+      left: -708px;
+    }
+    to {
+      left: 0px;
+    }
   }
 }
 
 @media only screen and (max-width: 730px) {
   .slider-container {
-    width: 93.75%;
-  }
-
-  .pets-list {
     max-width: 270px;
   }
 }
@@ -216,6 +287,16 @@
   .pets-wrapper {
     row-gap: 42px;
   }
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s;
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s;
 }
 
 .help-wrapper {

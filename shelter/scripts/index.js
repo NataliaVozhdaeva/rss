@@ -1,8 +1,7 @@
 async function getData() {
   const response = await fetch('../shelter/assets/pets.json');
-  petsArr = await response.json();
 
-  return petsArr;
+  return await response.json();
 }
 
 const btnNext = document.querySelector('.next');
@@ -28,6 +27,8 @@ function geterateArr(arr1, arr2) {
       i--;
     }
   }
+
+  return arr1;
 }
 
 function init() {
@@ -45,35 +46,18 @@ function init() {
   geterateArr(nextArr, currentArr);
 }
 
-init();
-
-function forward() {
-  pastArr = currArr;
-  currArr = nextArr;
-  nextArr = [];
-  geterateArr(nextArr, currentArr);
-}
-
-function backward() {
+function changeToBackward() {
   nextArr = currentArr;
   currentArr = pastArr;
   pastArr = [];
-  geterateArr(pastArr, currentArr);
-}
-
-function changeToBackward() {
-  let temporaryArr = currentArr;
-  currentArr = pastArr;
-  pastArr = temporaryArr;
-  nextArr = [];
-  geterateArr(nextArr, currentArr);
+  pastArr = geterateArr(pastArr, currentArr);
 }
 
 function changeToForward() {
-  let temporaryArr = currentArr;
+  pastArr = currentArr;
   currentArr = nextArr;
-  nextArr = temporaryArr;
-  pastArr = [];
+  nextArr = [];
+  nextArr = geterateArr(nextArr, currentArr);
 }
 
 const moveLeft = () => {
@@ -88,35 +72,56 @@ const moveRight = () => {
   btnPrev.removeEventListener('click', moveLeft);
 };
 
-btnNext.addEventListener('click', moveRight);
-btnPrev.addEventListener('click', moveLeft);
-
-slider.addEventListener('animationend', (animationEvent) => {
-  slider.classList.remove('transition-left');
-  slider.classList.remove('transition-right');
-  btnNext.addEventListener('click', moveRight);
-  btnPrev.addEventListener('click', moveLeft);
-});
-
-console.log(pastArr, currentArr, nextArr);
-
-async function createCard() {
+async function initSlider() {
   const petsArr = await getData();
-  const petsCards = document.querySelectorAll('.pets-item');
+  const prevPetsCards = document.querySelectorAll('.item-prev');
+  const curPetsCards = document.querySelectorAll('.item-cur');
+  const nextPetsCards = document.querySelectorAll('.item-next');
 
-  petsCards.forEach((el, i) => {
-    el.setAttribute('data-modal', petsArr[i].name);
+  init();
 
-    const img = el.querySelector('.pet-img');
-    img.setAttribute('src', petsArr[i].img);
-    img.setAttribute('alt', petsArr[i].breed + ' ' + petsArr[i].name);
+  function createCards(cards, arr) {
+    cards.forEach((el, i) => {
+      el.setAttribute('data-modal', petsArr[arr[i]].name);
 
-    const name = el.querySelector('.pet-text');
-    name.textContent = petsArr[i].name;
+      const img = el.querySelector('.pet-img');
+      img.setAttribute('src', petsArr[arr[i]].img);
+      img.setAttribute('alt', petsArr[arr[i]].breed + ' ' + petsArr[arr[i]].name);
+
+      const name = el.querySelector('.pet-text');
+      name.textContent = petsArr[arr[i]].name;
+    });
+  }
+
+  console.log(pastArr, currentArr, nextArr);
+
+  createCards(prevPetsCards, pastArr);
+  createCards(curPetsCards, currentArr);
+  createCards(nextPetsCards, nextArr);
+
+  slider.addEventListener('animationend', (animationEvent) => {
+    if (animationEvent.animationName === 'move-left') {
+      slider.classList.remove('transition-left');
+      changeToBackward();
+      console.log(pastArr, currentArr, nextArr);
+      createCards(prevPetsCards, pastArr);
+      createCards(curPetsCards, currentArr);
+      createCards(nextPetsCards, nextArr);
+    } else {
+      slider.classList.remove('transition-right');
+      changeToForward();
+      console.log(pastArr, currentArr, nextArr);
+      createCards(prevPetsCards, pastArr);
+      createCards(curPetsCards, currentArr);
+      createCards(nextPetsCards, nextArr);
+    }
+
+    btnNext.addEventListener('click', moveRight);
+    btnPrev.addEventListener('click', moveLeft);
   });
 }
 
-createCard();
+initSlider();
 
 async function createModal() {
   const petsArr = await getData();
@@ -139,6 +144,9 @@ async function createModal() {
 }
 
 createModal();
+
+btnNext.addEventListener('click', moveRight);
+btnPrev.addEventListener('click', moveLeft);
 
 ///modal window
 const modalButtons = document.querySelectorAll('.js-open-modal');

@@ -82,18 +82,14 @@
   overflow-x: hidden;
 }
 
-.pets-list {
+.js-slider {
   position: relative;
-  left: -990px;
-
-  display: flex;
-  margin: auto;
+  left: -1080px;
 }
 
-.item-right,
-.item-active,
-.item-left {
+.pets-list {
   display: flex;
+  margin: auto;
   column-gap: 90px;
 }
 
@@ -175,16 +171,16 @@
 
 @keyframes move-right {
   from {
-    left: -990px;
+    left: -1080px;
   }
   to {
-    left: -1980px;
+    left: -2160px;
   }
 }
 
 @keyframes move-left {
   from {
-    left: -990px;
+    left: -1080px;
   }
   to {
     left: 0px;
@@ -192,32 +188,26 @@
 }
 
 @media only screen and (max-width: 1180px) {
-  .slider-container {
-    max-width: 880px;
-  }
-
   .pets-list {
-    left: -880px;
+    max-width: 690px;
   }
 
-  .item-right,
-  .item-active,
-  .item-left {
-    column-gap: 35px;
+  .js-slider {
+    left: -720px;
   }
 
   @keyframes move-right {
     from {
-      left: -880px;
+      left: -720px;
     }
     to {
-      left: -1760px;
+      left: -1440px;
     }
   }
 
   @keyframes move-left {
     from {
-      left: -880px;
+      left: -690px;
     }
     to {
       left: 0px;
@@ -225,33 +215,37 @@
   }
 }
 
-@media only screen and (max-width: 968px) {
+@media only screen and (max-width: 1080px) {
+  .pets-list {
+    max-width: 600px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .slider-container {
-    max-width: 708px;
+    width: 580px;
   }
 
   .pets-list {
-    left: -708px;
+    column-gap: 40px;
   }
 
-  .item-right,
-  .item-active,
-  .item-left {
-    column-gap: 17.25%;
+  .js-slider {
+    left: -620px;
   }
 
   @keyframes move-right {
     from {
-      left: -708px;
+      left: -620px;
     }
     to {
-      left: -1416px;
+      left: -1240px;
     }
   }
 
   @keyframes move-left {
     from {
-      left: -708px;
+      left: -620px;
     }
     to {
       left: 0px;
@@ -261,7 +255,29 @@
 
 @media only screen and (max-width: 730px) {
   .slider-container {
-    max-width: 270px;
+    width: 310px;
+  }
+
+  .js-slider {
+    left: -290px;
+  }
+
+  @keyframes move-right {
+    from {
+      left: -290px;
+    }
+    to {
+      left: -600px;
+    }
+  }
+
+  @keyframes move-left {
+    from {
+      left: -290px;
+    }
+    to {
+      left: 20px;
+    }
   }
 }
 

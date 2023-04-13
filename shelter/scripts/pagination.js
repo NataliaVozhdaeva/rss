@@ -5,6 +5,9 @@ const currentPage = document.querySelector('.pagination-current');
 const btnToStart = document.querySelector('.pagination-start');
 const btnToEnd = document.querySelector('.pagination-finish');
 
+let currentPageNum = 1;
+currentPage.textContent = currentPageNum;
+
 function geterateStartDate(arr) {
   let newArr = arr.sort(() => Math.random() - 0.5);
   return newArr;
@@ -19,6 +22,24 @@ if (window.innerWidth < 1279 && window.innerWidth > 639) {
 if (window.innerWidth < 639) {
   petsPerPage = 3;
 }
+
+let createZoo = () => {
+  let arr = [0, 1, 2, 3, 4, 5, 6, 7];
+
+  let zoo = [];
+  for (let i = 0; i < 6; i++) {
+    zoo = zoo.concat(geterateStartDate(arr));
+  }
+
+  let subarray = [];
+  for (let i = 0; i < Math.ceil(zoo.length / petsPerPage); i++) {
+    subarray[i] = zoo.slice(i * petsPerPage, i * petsPerPage + petsPerPage);
+  }
+
+  return subarray;
+};
+
+let zoo = createZoo();
 
 async function initPets() {
   const petsArr = await getData();
@@ -41,46 +62,34 @@ async function initPets() {
       card.append(cardBtn);
     }
   }
-  createCardsTemplate();
 
-  let createZoo = () => {
-    let arr = [0, 1, 2, 3, 4, 5, 6, 7];
+  function createCards(cards, page) {
+    page = currentPageNum;
+    console.log('init ' + currentPageNum);
+    createCardsTemplate();
 
-    let zoo = [];
-    for (let i = 0; i < 6; i++) {
-      zoo = zoo.concat(geterateStartDate(arr));
-    }
-
-    return zoo;
-  };
-
-  let zoo = createZoo();
-
-  function createCards(cards) {
     Array.from(cards).forEach((el, i) => {
-      el.setAttribute('data-modal', petsArr[zoo[i]].name);
+      el.setAttribute('data-modal', petsArr[zoo[page - 1][i]].name);
 
       const img = el.querySelector('.pet-img');
-      img.setAttribute('src', petsArr[zoo[i]].img);
-      img.setAttribute('alt', petsArr[zoo[i]].breed + ' ' + petsArr[zoo[i]].name);
+      img.setAttribute('src', petsArr[zoo[page - 1][i]].img);
+      img.setAttribute('alt', petsArr[zoo[page - 1][i]].breed + ' ' + petsArr[zoo[page - 1][i]].name);
 
       const name = el.querySelector('.pet-text');
-      name.textContent = petsArr[zoo[i]].name;
+      name.textContent = petsArr[zoo[page - 1][i]].name;
     });
   }
 
   const cards = document.getElementsByClassName('pets-item');
 
-  createCards(cards, petsArr);
+  createCards(cards, 1);
 }
 
 initPets();
 
-let currentPageNum = 1;
-currentPage.textContent = currentPageNum;
-
 if (currentPageNum === 1) {
   btnPrev.setAttribute('disabled', true);
+  btnToStart.setAttribute('disabled', true);
 }
 
 const pagePlusHandler = () => {
@@ -94,8 +103,8 @@ const pageMinusHandler = () => {
 };
 
 const nextPage = () => {
-  initPets();
   pagePlusHandler();
+  console.log('next ' + currentPageNum);
   if (currentPageNum > 1) {
     btnPrev.removeAttribute('disabled');
     btnToStart.removeAttribute('disabled');
@@ -105,10 +114,11 @@ const nextPage = () => {
     btnNext.setAttribute('disabled', true);
     btnToEnd.setAttribute('disabled', true);
   }
+
+  initPets();
 };
 
 const prevPage = () => {
-  initPets();
   pageMinusHandler();
   if (currentPageNum === 1) {
     btnPrev.setAttribute('disabled', true);
@@ -118,6 +128,8 @@ const prevPage = () => {
     btnNext.removeAttribute('disabled');
     btnToEnd.removeAttribute('disabled');
   }
+
+  initPets();
 };
 
 /* moveToEnd = () => {

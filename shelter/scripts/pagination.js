@@ -65,7 +65,6 @@ async function initPets() {
 
   function createCards(cards, page) {
     page = currentPageNum;
-    console.log('init ' + currentPageNum);
     createCardsTemplate();
 
     Array.from(cards).forEach((el, i) => {
@@ -83,6 +82,41 @@ async function initPets() {
   const cards = document.getElementsByClassName('pets-item');
 
   createCards(cards, 1);
+
+  const modalButtons = document.querySelectorAll('.js-open-modal');
+  const closeButtons = document.querySelectorAll('.js-modal-close');
+  console.log(modalButtons);
+
+  modalButtons.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      console.log('kk');
+
+      let modalId = this.getAttribute('data-modal');
+      let modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
+
+      modalElem.classList.add('active');
+      overlay.classList.add('active');
+      body.classList.add('stop-scroll');
+    });
+  });
+
+  closeButtons.forEach(function (item) {
+    item.addEventListener('click', function () {
+      let parentModal = this.closest('.modal');
+      parentModal.classList.remove('active');
+      overlay.classList.remove('active');
+      body.classList.remove('stop-scroll');
+    });
+  });
+
+  overlay.addEventListener('click', () => {
+    if (document.querySelector('.modal.active')) {
+      document.querySelector('.modal.active').classList.remove('active');
+      overlay.classList.remove('active');
+      body.classList.remove('stop-scroll');
+    }
+  });
 }
 
 initPets();
@@ -104,7 +138,6 @@ const pageMinusHandler = () => {
 
 const nextPage = () => {
   pagePlusHandler();
-  console.log('next ' + currentPageNum);
   if (currentPageNum > 1) {
     btnPrev.removeAttribute('disabled');
     btnToStart.removeAttribute('disabled');

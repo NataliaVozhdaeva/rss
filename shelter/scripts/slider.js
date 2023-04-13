@@ -2,6 +2,12 @@ const btnNext = document.querySelector('.next');
 const btnPrev = document.querySelector('.prev');
 const slider = document.querySelector('.js-slider');
 
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 let prevArr = [];
 let currentArr = [];
 let nextArr = [];

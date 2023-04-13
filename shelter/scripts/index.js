@@ -1,5 +1,12 @@
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 async function getData() {
-  const response = await fetch('../shelter/assets/pets.json');
+  // const response = await fetch('../shelter/assets/pets.json');
+  const response = await fetch('../assets/pets.json');
 
   return await response.json();
 }

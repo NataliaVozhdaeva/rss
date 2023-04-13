@@ -26,6 +26,10 @@
   margin-bottom: 0;
 }
 
+.pets-wrapper {
+  position: relative;
+}
+
 .allpets {
   max-width: 100%;
 
@@ -71,10 +75,6 @@
   .allpets {
     padding-bottom: 11px;
   }
-
-  .pets-item:nth-last-child(-n + 2) {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 360px) {
@@ -97,9 +97,5 @@
 
   .pagination-container {
     column-gap: 10px;
-  }
-
-  .pets-item:nth-last-child(-n + 5) {
-    display: none;
   }
 }

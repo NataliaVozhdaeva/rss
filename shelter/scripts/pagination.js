@@ -85,12 +85,12 @@ async function initPets() {
 
   const modalButtons = document.querySelectorAll('.js-open-modal');
   const closeButtons = document.querySelectorAll('.js-modal-close');
-  console.log(modalButtons);
+  const overlay = document.querySelector('#overlay-modal');
+  const body = document.querySelector('html');
 
   modalButtons.forEach(function (item) {
     item.addEventListener('click', function (e) {
       e.preventDefault();
-      console.log('kk');
 
       let modalId = this.getAttribute('data-modal');
       let modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
@@ -165,10 +165,27 @@ const prevPage = () => {
   initPets();
 };
 
-/* moveToEnd = () => {
-  48 / petsPerPAge
-} */
+moveToEnd = () => {
+  currentPageNum = 48 / petsPerPage;
+  btnNext.setAttribute('disabled', true);
+  btnToEnd.setAttribute('disabled', true);
+  btnPrev.removeAttribute('disabled');
+  btnToStart.removeAttribute('disabled');
+  initPets();
+  currentPage.textContent = currentPageNum;
+};
+
+moveToStart = () => {
+  currentPageNum = 1;
+  btnNext.removeAttribute('disabled');
+  btnToEnd.removeAttribute('disabled');
+  btnPrev.setAttribute('disabled', true);
+  btnToStart.setAttribute('disabled', true);
+  initPets();
+  currentPage.textContent = currentPageNum;
+};
 
 btnNext.addEventListener('click', nextPage);
 btnPrev.addEventListener('click', prevPage);
-//btnToEnd.addEventListener('click', moveToEnd);
+btnToEnd.addEventListener('click', moveToEnd);
+btnToStart.addEventListener('click', moveToStart);

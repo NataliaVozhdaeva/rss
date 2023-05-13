@@ -4,9 +4,9 @@
   --middle-side: #32cd32;
   --middle-side_hover: #228b2280;
 
-  --dark-light-side: #2e8b57;
-  --dark-dark-side: #006400;
-  --dark-middle-side: #228b22;
+  --dark-light-side: #6a5acd;
+  --dark-dark-side: #4b0082;
+  --dark-middle-side: #483d8b;
   --dark-middle-side_hover: #006400;
 }
 
@@ -26,18 +26,49 @@ body.dark {
   width: 75vw;
   margin: 100px auto;
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 30px;
   align-items: center;
 }
 
-.about {
-  height: 400px;
-  width: 400px;
+.greeting {
+  width: 100%;
+  padding: 30px;
+  margin-bottom: 50px;
+
+  color: #ffffff;
   border: 5px solid var(--dark-side);
+  background-color: var(--dark-side);
 }
 
-.dark .about {
+.dark .greeting {
+  color: #6495ed;
   border: 5px solid var(--dark-dark-side);
+  background-color: var(--dark-dark-side);
+}
+
+.game-info {
+  width: 316px;
+  padding: 30px;
+  order: 1;
+
+  text-align: justify;
+
+  background-color: transparent;
+  font-size: 1rem;
+
+  border-radius: 2px;
+}
+
+.game-info.active {
+  color: #ffffff;
+  background-color: var(--dark-side);
+}
+
+.dark .game-info.active {
+  color: #6495ed;
+  background-color: var(--dark-dark-side);
 }
 
 .game-container {
@@ -45,7 +76,7 @@ body.dark {
   width: 316px;
   padding: 5px;
 
-  border: 3px solid;
+  border: 5px solid;
   border-left-color: var(--dark-side);
   border-bottom-color: var(--dark-side);
   border-right-color: var(--light-side);
@@ -197,4 +228,8 @@ body.dark {
 
 .ruined {
   background-color: darkgreen;
+}
+
+.dark .ruined {
+  background-color: #191970;
 }

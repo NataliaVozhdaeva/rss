@@ -1,7 +1,16 @@
+const body = document.querySelector('body');
+const main = document.createElement('main');
+main.className = 'main';
+const greeting = document.createElement('div');
+greeting.className = 'greeting';
+greeting.textContent =
+  'Добро пожаловать в команду лесничих! Белочки, как известно, регулярно запасают провизию в тайниках. Ваше первое задание - найти на карте (игровом поле) все тайники, чтобы случайно не разорить их.';
+main.appendChild(greeting);
+const gameInfo = document.createElement('div');
+gameInfo.className = 'game-info';
+main.appendChild(gameInfo);
+
 const createGameField = (width, height, nutsCount) => {
-  const body = document.querySelector('body');
-  const main = document.createElement('main');
-  main.className = 'main';
   const gameContainer = document.createElement('div');
   gameContainer.className = 'game-container';
   const gameTop = document.createElement('div');
@@ -16,6 +25,7 @@ const createGameField = (width, height, nutsCount) => {
   amountBtn.className = 'game-top_btn amount';
 
   const cellsCount = width * height;
+  let closedCell = cellsCount;
   const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
   console.log(nuts);
 
@@ -48,9 +58,12 @@ const createGameField = (width, height, nutsCount) => {
     if (cell.classList.contains('opened')) return;
 
     cell.classList.add('opened');
+    closedCell--;
 
     if (isNut(row, col)) {
-      alert('Oh no! You ruined squirrel stocks and have to start your internship from scratch...');
+      gameInfo.classList.add('active');
+      gameInfo.textContent =
+        'Вам не нужно открывать тайник, нужно только обозначить место. Придется начинать стажировку сначала...';
       cell.classList.add('ruined');
       document.querySelectorAll('.nut').forEach((el) => el.classList.add('opened'));
       cells.forEach((el) => (el.disabled = true));
@@ -64,6 +77,11 @@ const createGameField = (width, height, nutsCount) => {
             openCell(row + r, col + c);
           }
         }
+      }
+      if (closedCell <= nutsCount) {
+        gameInfo.classList.add('active');
+        gameInfo.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
+        cells.forEach((el) => (el.disabled = true));
       }
     }
   };

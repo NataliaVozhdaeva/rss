@@ -1,26 +1,28 @@
-:root{
-  --light-side: #ADFF2F;
-  --dark-side: #228B22;
-  --middle-side: #32CD32;
-  --middle-side_hover: #228B2280;
+:root {
+  --light-side: #adff2f;
+  --dark-side: #228b22;
+  --middle-side: #32cd32;
+  --middle-side_hover: #228b2280;
 
-  --dark-light-side:#2E8B57;
+  --dark-light-side: #2e8b57;
   --dark-dark-side: #006400;
-  --dark-middle-side: #228B22;
+  --dark-middle-side: #228b22;
   --dark-middle-side_hover: #006400;
 }
 
-body{
+body {
+  box-sizing: border-box;
+  height: 98vh;
   background: url('./assets/forest.jpeg') no-repeat center;
   background-size: cover;
 }
 
-body.dark{
+body.dark {
   background: url('./assets/forest-dark.jpeg') no-repeat center;
   background-size: cover;
 }
 
-.main{
+.main {
   width: 75vw;
   margin: 100px auto;
   display: flex;
@@ -28,22 +30,22 @@ body.dark{
   align-items: center;
 }
 
-.about{
+.about {
   height: 400px;
   width: 400px;
   border: 5px solid var(--dark-side);
 }
 
-.dark .about{
+.dark .about {
   border: 5px solid var(--dark-dark-side);
 }
 
-.game-container{
+.game-container {
   box-sizing: border-box;
   width: 316px;
   padding: 5px;
 
-  border: 3px solid ;
+  border: 3px solid;
   border-left-color: var(--dark-side);
   border-bottom-color: var(--dark-side);
   border-right-color: var(--light-side);
@@ -52,7 +54,7 @@ body.dark{
   background-color: var(--middle-side);
 }
 
-.dark   .game-container{
+.dark .game-container {
   border-left-color: var(--dark-dark-side);
   border-bottom-color: var(--dark-dark-side);
   border-right-color: var(--dark-light-side);
@@ -61,7 +63,7 @@ body.dark{
   background-color: var(--dark-middle-side);
 }
 
-.game-top{
+.game-top {
   box-sizing: border-box;
   height: 50px;
   width: 100%;
@@ -74,20 +76,20 @@ body.dark{
   column-gap: 10px;
 
   border: 3px solid;
-  border-right-color: var(--dark-side);;
-  border-top-color: var(--dark-side);;
+  border-right-color: var(--dark-side);
+  border-top-color: var(--dark-side);
   border-left-color: var(--light-side);
   border-bottom-color: var(--light-side);
 }
 
-.dark   .game-top{
-  border-right-color: var(--dark-dark-side);;
-  border-top-color: var(--dark-dark-side);;
+.dark .game-top {
+  border-right-color: var(--dark-dark-side);
+  border-top-color: var(--dark-dark-side);
   border-left-color: var(--dark-light-side);
   border-bottom-color: var(--dark-light-side);
 }
 
-.game-top_btn{
+.game-top_btn {
   height: 100%;
   padding: 5px 10px;
 
@@ -102,7 +104,7 @@ body.dark{
   border-top-color: var(--light-side);
 }
 
-.dark   .game-top_btn{
+.dark .game-top_btn {
   background-color: var(--dark-middle-side);
   border-left-color: var(--dark-dark-side);
   border-bottom-color: var(--dark-dark-side);
@@ -110,20 +112,21 @@ body.dark{
   border-top-color: var(--dark-light-side);
 }
 
-.game-top_btn:hover{
+.game-top_btn:hover {
   background-color: var(--middle-side_hover);
   cursor: pointer;
 }
 
-.dark   .game-top_btn:hover{
+.dark .game-top_btn:hover {
   background-color: var(--dark-middle-side_hover);
 }
 
-.score, .timer{
+.amount,
+.timer {
   flex-grow: 1;
 }
 
-.restart{
+.restart {
   width: 40px;
   height: 40px;
 
@@ -133,13 +136,13 @@ body.dark{
   background-repeat: no-repeat;
 }
 
-.game-field{
+.game-field {
   display: flex;
   flex-wrap: wrap;
   width: 300px;
 }
 
-.game-cell{
+.game-cell {
   box-sizing: border-box;
   width: 30px;
   height: 30px;
@@ -149,30 +152,40 @@ body.dark{
   border-bottom-color: var(--dark-side);
   border-right-color: var(--light-side);
   border-top-color: var(--light-side);
+
+  background-color: var(--middle-side);
 }
 
-.dark   .game-cell{
+.dark .game-cell {
   border-left-color: var(--dark-dark-side);
   border-bottom-color: var(--dark-dark-side);
   border-right-color: var(--dark-light-side);
   border-top-color: var(--dark-light-side);
+
+  background-color: var(--dark-middle-side);
 }
 
-.game-cell.opened{
+.game-cell.opened {
   border-right-color: var(--dark-side);
   border-top-color: var(--dark-side);
   border-left-color: var(--light-side);
   border-bottom-color: var(--light-side);
 }
 
-.dark   .game-cell.opened{
+.dark .game-cell.opened {
   border-right-color: var(--dark-dark-side);
   border-top-color: var(--dark-dark-side);
   border-left-color: var(--dark-light-side);
   border-bottom-color: var(--dark-light-side);
 }
 
-.game-cell.marked{
+.game-cell.marked {
+  background-image: url('./assets/banner.png');
+  background-position: center;
+  background-size: contain;
+}
+
+.nut {
   background-image: url('./assets/icons8-nut-64.png');
   background-position: center;
   background-size: contain;

@@ -1,6 +1,3 @@
 {
-  "html.autoClosingTags": false,
-  "[html]": {
-    "editor.defaultFormatter": null
-  }
+  "html.autoClosingTags": false
 }

@@ -16,6 +16,8 @@ const createGameField = (width, height, nutsCount) => {
   amountBtn.className = 'game-top_btn amount';
 
   const cellsCount = width * height;
+  const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
+  console.log(nuts);
 
   body.appendChild(main);
   main.appendChild(gameContainer);
@@ -30,15 +32,63 @@ const createGameField = (width, height, nutsCount) => {
   for (let i = 0; i < cellsCount; i++) {
     const gameCell = document.createElement('button');
     gameCell.className = 'game-cell';
+    if (nuts.includes(i)) {
+      gameCell.classList.add('nut');
+    }
+
     gameField.appendChild(gameCell);
   }
 
   const cells = [...gameField.children];
-  const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
-  console.log(nuts);
+
+  const openCell = (row, col) => {
+    const index = row * width + col;
+    const cell = cells[index];
+    if (!isValid(row, col)) return;
+    if (cell.classList.contains('opened')) return;
+
+    cell.classList.add('opened');
+
+    if (isNut(row, col)) {
+      alert('Oh no! You ruined squirrel stocks and have to start your internship from scratch...');
+      cell.classList.add('ruined');
+      document.querySelectorAll('.nut').forEach((el) => el.classList.add('opened'));
+      cells.forEach((el) => (el.disabled = true));
+    } else {
+      const count = getCount(row, col);
+      if (count !== 0) {
+        cell.textContent = getCount(row, col);
+      } else {
+        for (let c = -1; c <= 1; c++) {
+          for (let r = -1; r <= 1; r++) {
+            openCell(row + r, col + c);
+          }
+        }
+      }
+    }
+  };
+
+  const getCount = (row, col) => {
+    let count = 0;
+    for (let c = -1; c <= 1; c++) {
+      for (let r = -1; r <= 1; r++) {
+        if (isNut(row + r, col + c)) {
+          count++;
+        }
+      }
+    }
+    return count;
+  };
+
+  const isValid = (row, col) => {
+    return row >= 0 && row < height && col >= 0 && col < width;
+  };
 
   gameField.addEventListener('contextmenu', (e) => {
     e.preventDefault();
+    if (e.target.classList.contains('opened')) {
+      return;
+    }
     e.target.classList.contains('marked') ? e.target.classList.remove('marked') : e.target.classList.add('marked');
   });
 
@@ -46,16 +96,14 @@ const createGameField = (width, height, nutsCount) => {
     if (e.target.classList.contains('marked')) {
       return;
     }
-    e.target.classList.add('opened');
     const index = cells.indexOf(e.target);
     const col = index % width;
     const row = Math.floor(index / width);
-    if (isNut(row, col)) {
-      e.target.classList.add('nut');
-    }
+    openCell(row, col);
   });
 
   const isNut = (row, col) => {
+    if (!isValid(row, col)) return false;
     const cellIndex = row * width + col;
     return nuts.includes(cellIndex);
   };

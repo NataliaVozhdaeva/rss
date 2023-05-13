@@ -147,6 +147,10 @@ body.dark {
   width: 30px;
   height: 30px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: solid 2px;
   border-left-color: var(--dark-side);
   border-bottom-color: var(--dark-side);
@@ -185,8 +189,12 @@ body.dark {
   background-size: contain;
 }
 
-.nut {
+.nut.opened {
   background-image: url('./assets/icons8-nut-64.png');
   background-position: center;
   background-size: contain;
+}
+
+.ruined {
+  background-color: darkgreen;
 }

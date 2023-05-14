@@ -41,6 +41,9 @@ const createGameField = (width, height, nutsCount) => {
 
   const cellsCount = width * height;
   let closedCell = cellsCount;
+
+  let flagsCount = nutsCount;
+  amountBtn.textContent = flagsCount;
   const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
 
   for (let i = 0; i < cellsCount; i++) {
@@ -137,7 +140,15 @@ const createGameField = (width, height, nutsCount) => {
     if (e.target.classList.contains('opened')) {
       return;
     }
-    e.target.classList.contains('marked') ? e.target.classList.remove('marked') : e.target.classList.add('marked');
+    if (e.target.classList.contains('marked')) {
+      e.target.classList.remove('marked');
+      flagsCount++;
+      amountBtn.textContent = flagsCount;
+    } else {
+      e.target.classList.add('marked');
+      flagsCount--;
+      amountBtn.textContent = flagsCount;
+    }
   });
 
   gameField.addEventListener('click', (e) => {
@@ -171,5 +182,6 @@ themeToggler.addEventListener('click', () => {
 
 resetBtn.addEventListener('click', function () {
   document.querySelector('.game-field').remove();
+  gameMsg.textContent = '';
   createGameField(10, 10, 10);
 });

@@ -21,18 +21,43 @@ const gameTop = document.createElement('div');
 gameTop.className = 'game-top';
 body.appendChild(main);
 main.appendChild(gameContainer);
-const timerBtn = document.createElement('button');
+const timerBtn = document.createElement('div');
 timerBtn.className = 'btn game-top_btn timer';
 const resetBtn = document.createElement('button');
 resetBtn.className = 'btn game-top_btn restart';
-const amountBtn = document.createElement('button');
+const amountBtn = document.createElement('div');
 amountBtn.className = 'btn game-top_btn amount';
-
 gameContainer.appendChild(gameTop);
-
 gameTop.appendChild(amountBtn);
 gameTop.appendChild(resetBtn);
 gameTop.appendChild(timerBtn);
+
+let nutsCount = 10;
+let width = 15;
+let height = 15;
+
+const flagsWatcher = document.createElement('div');
+amountBtn.appendChild(flagsWatcher);
+
+const nutsWatcher = document.createElement('div');
+nutsWatcher.textContent = `nuts: ${nutsCount}`;
+gameInfo.prepend(nutsWatcher);
+
+const difficulty = document.createElement('div');
+if (width == 10) {
+  difficulty.textContent = 'game difficulty: EASY';
+} else if (width == 15) {
+  difficulty.textContent = 'game difficulty: MEDIUM';
+} else {
+  difficulty.textContent = 'game difficulty: HARD';
+}
+
+gameInfo.prepend(difficulty);
+
+let clickCounter = 0;
+const clickWatcher = document.createElement('div');
+clickWatcher.textContent = `clicks: ${clickCounter}`;
+gameInfo.prepend(clickWatcher);
 
 const createGameField = (width, height, nutsCount) => {
   const gameField = document.createElement('div');
@@ -43,7 +68,7 @@ const createGameField = (width, height, nutsCount) => {
   let closedCell = cellsCount;
 
   let flagsCount = nutsCount;
-  amountBtn.textContent = flagsCount;
+  flagsWatcher.textContent = `flags: ${flagsCount}`;
   const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
 
   for (let i = 0; i < cellsCount; i++) {
@@ -143,11 +168,11 @@ const createGameField = (width, height, nutsCount) => {
     if (e.target.classList.contains('marked')) {
       e.target.classList.remove('marked');
       flagsCount++;
-      amountBtn.textContent = flagsCount;
+      flagsWatcher.textContent = `flags: ${flagsCount}`;
     } else {
       e.target.classList.add('marked');
       flagsCount--;
-      amountBtn.textContent = flagsCount;
+      flagsWatcher.textContent = `flags: ${flagsCount}`;
     }
   });
 
@@ -158,6 +183,8 @@ const createGameField = (width, height, nutsCount) => {
     const index = cells.indexOf(e.target);
     const col = index % width;
     const row = Math.floor(index / width);
+    clickCounter++;
+    clickWatcher.textContent = `clicks: ${clickCounter}`;
     openCell(row, col);
   });
 
@@ -168,7 +195,7 @@ const createGameField = (width, height, nutsCount) => {
   };
 };
 
-createGameField(10, 10, 20);
+createGameField(width, height, nutsCount);
 
 themeToggler.addEventListener('click', () => {
   if (body.classList.contains('dark')) {
@@ -183,5 +210,5 @@ themeToggler.addEventListener('click', () => {
 resetBtn.addEventListener('click', function () {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
-  createGameField(10, 10, 10);
+  createGameField(width, height, nutsCount);
 });

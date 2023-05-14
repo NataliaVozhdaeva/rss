@@ -2,12 +2,12 @@
   --light-side: #adff2f;
   --dark-side: #228b22;
   --middle-side: #32cd32;
-  --middle-side_hover: #228b2280;
+
+  --hover: #00000080;
 
   --dark-light-side: #6a5acd;
   --dark-dark-side: #4b0082;
   --dark-middle-side: #483d8b;
-  --dark-middle-side_hover: #00000080;
 }
 
 body {
@@ -35,15 +35,15 @@ body.dark {
 .greeting {
   width: 75%;
   padding: 30px;
+  flex-grow: 3;
 
   color: #ffffff;
-  background-color: var(--dark-side);
+  background-color: var(--hover);
   border-radius: 2px;
 }
 
 .dark .greeting {
   color: #6495ed;
-  background-color: var(--dark-dark-side);
 }
 
 .game-info {
@@ -53,24 +53,32 @@ body.dark {
   align-self: flex-start;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   text-align: justify;
   color: #ffffff;
-  background-color: #ffffff80;
+  background-color: var(--hover);
 
   font-size: 1rem;
 
   border-radius: 2px;
 }
 
+.game-info p {
+  order: -1;
+}
+
 .dark .game-info {
   color: #6495ed;
-  background-color: var(--dark-dark-side);
 }
 
 .theme-btn {
   width: 150px;
   height: 50px;
+}
+
+.theme-btn:hover {
+  color: #ffffff;
 }
 
 .game-container {
@@ -149,12 +157,8 @@ body.dark {
 }
 
 .btn:hover {
-  background-color: var(--middle-side_hover);
+  background-color: var(--hover);
   cursor: pointer;
-}
-
-.dark .btn:hover {
-  background-color: var(--dark-middle-side_hover);
 }
 
 .amount,
@@ -179,8 +183,8 @@ body.dark {
 
 .game-cell {
   box-sizing: border-box;
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
 
   display: flex;
   align-items: center;

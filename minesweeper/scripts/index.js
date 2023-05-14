@@ -9,20 +9,12 @@ main.appendChild(greeting);
 const gameInfo = document.createElement('div');
 gameInfo.className = 'game-info';
 main.appendChild(gameInfo);
+const gameMsg = document.createElement('p');
+gameInfo.prepend(gameMsg);
 themeToggler = document.createElement('button');
 themeToggler.className = 'btn theme-btn';
 themeToggler.textContent = 'Темная тема';
 gameInfo.appendChild(themeToggler);
-
-themeToggler.addEventListener('click', () => {
-  if (body.classList.contains('dark')) {
-    body.classList.remove('dark');
-    themeToggler.textContent = 'Темная тема';
-  } else {
-    body.classList.add('dark');
-    themeToggler.textContent = 'Светлая тема';
-  }
-});
 
 const createGameField = (width, height, nutsCount) => {
   const gameContainer = document.createElement('div');
@@ -78,8 +70,7 @@ const createGameField = (width, height, nutsCount) => {
     closedCell--;
 
     if (isNut(row, col)) {
-      gameInfo.classList.add('active');
-      gameInfo.textContent =
+      gameMsg.textContent =
         'Вам не нужно открывать тайник, нужно только обозначить место. Придется начинать стажировку сначала...';
       cell.classList.add('ruined');
       document.querySelectorAll('.nut').forEach((el) => el.classList.add('opened'));
@@ -96,8 +87,7 @@ const createGameField = (width, height, nutsCount) => {
         }
       }
       if (closedCell <= nutsCount) {
-        gameInfo.classList.add('active');
-        gameInfo.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
+        gameMsg.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
         cells.forEach((el) => (el.disabled = true));
       }
     }
@@ -144,4 +134,15 @@ const createGameField = (width, height, nutsCount) => {
   };
 };
 
-createGameField(25, 25, 10);
+createGameField(10, 10, 99);
+
+themeToggler.addEventListener('click', () => {
+  console.log('click');
+  if (body.classList.contains('dark')) {
+    body.classList.remove('dark');
+    themeToggler.textContent = 'Темная тема';
+  } else {
+    body.classList.add('dark');
+    themeToggler.textContent = 'Светлая тема';
+  }
+});

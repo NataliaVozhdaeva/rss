@@ -7,12 +7,12 @@
   --dark-light-side: #6a5acd;
   --dark-dark-side: #4b0082;
   --dark-middle-side: #483d8b;
-  --dark-middle-side_hover: #006400;
+  --dark-middle-side_hover: #00000080;
 }
 
 body {
   box-sizing: border-box;
-  height: 98vh;
+  height: 100%;
   background: url('./assets/forest.jpeg') no-repeat center;
   background-size: cover;
 }
@@ -28,52 +28,53 @@ body.dark {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 30px;
+  gap: 30px;
   align-items: center;
 }
 
 .greeting {
-  width: 100%;
+  width: 75%;
   padding: 30px;
-  margin-bottom: 50px;
 
   color: #ffffff;
-  border: 5px solid var(--dark-side);
   background-color: var(--dark-side);
+  border-radius: 2px;
 }
 
 .dark .greeting {
   color: #6495ed;
-  border: 5px solid var(--dark-dark-side);
   background-color: var(--dark-dark-side);
 }
 
 .game-info {
-  width: 316px;
+  width: 320px;
   padding: 30px;
   order: 1;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
 
   text-align: justify;
+  color: #ffffff;
+  background-color: #ffffff80;
 
-  background-color: transparent;
   font-size: 1rem;
 
   border-radius: 2px;
 }
 
-.game-info.active {
-  color: #ffffff;
-  background-color: var(--dark-side);
-}
-
-.dark .game-info.active {
+.dark .game-info {
   color: #6495ed;
   background-color: var(--dark-dark-side);
 }
 
+.theme-btn {
+  width: 150px;
+  height: 50px;
+}
+
 .game-container {
   box-sizing: border-box;
-  width: 316px;
   padding: 5px;
 
   border: 5px solid;
@@ -122,6 +123,9 @@ body.dark {
 
 .game-top_btn {
   height: 100%;
+}
+
+.btn {
   padding: 5px 10px;
 
   display: flex;
@@ -135,7 +139,8 @@ body.dark {
   border-top-color: var(--light-side);
 }
 
-.dark .game-top_btn {
+.dark .btn {
+  color: #6495ed;
   background-color: var(--dark-middle-side);
   border-left-color: var(--dark-dark-side);
   border-bottom-color: var(--dark-dark-side);
@@ -143,12 +148,12 @@ body.dark {
   border-top-color: var(--dark-light-side);
 }
 
-.game-top_btn:hover {
+.btn:hover {
   background-color: var(--middle-side_hover);
   cursor: pointer;
 }
 
-.dark .game-top_btn:hover {
+.dark .btn:hover {
   background-color: var(--dark-middle-side_hover);
 }
 
@@ -170,13 +175,12 @@ body.dark {
 .game-field {
   display: flex;
   flex-wrap: wrap;
-  width: 300px;
 }
 
 .game-cell {
   box-sizing: border-box;
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
 
   display: flex;
   align-items: center;
@@ -232,4 +236,21 @@ body.dark {
 
 .dark .ruined {
   background-color: #191970;
+}
+
+@media only screen and (max-width: 800px) {
+  .game-field {
+    width: 180px;
+  }
+
+  .game-cell {
+    width: 18px;
+    height: 18px;
+  }
+
+  .greeting,
+  .game-info {
+    padding: 15px;
+    font-size: 12px;
+  }
 }

@@ -9,6 +9,20 @@ main.appendChild(greeting);
 const gameInfo = document.createElement('div');
 gameInfo.className = 'game-info';
 main.appendChild(gameInfo);
+themeToggler = document.createElement('button');
+themeToggler.className = 'btn theme-btn';
+themeToggler.textContent = 'Темная тема';
+gameInfo.appendChild(themeToggler);
+
+themeToggler.addEventListener('click', () => {
+  if (body.classList.contains('dark')) {
+    body.classList.remove('dark');
+    themeToggler.textContent = 'Темная тема';
+  } else {
+    body.classList.add('dark');
+    themeToggler.textContent = 'Светлая тема';
+  }
+});
 
 const createGameField = (width, height, nutsCount) => {
   const gameContainer = document.createElement('div');
@@ -18,16 +32,15 @@ const createGameField = (width, height, nutsCount) => {
   const gameField = document.createElement('div');
   gameField.className = 'game-field';
   const timerBtn = document.createElement('button');
-  timerBtn.className = 'game-top_btn timer';
+  timerBtn.className = 'btn game-top_btn timer';
   const resetBtn = document.createElement('button');
-  resetBtn.className = 'game-top_btn restart';
+  resetBtn.className = 'btn game-top_btn restart';
   const amountBtn = document.createElement('button');
-  amountBtn.className = 'game-top_btn amount';
+  amountBtn.className = 'btn game-top_btn amount';
 
   const cellsCount = width * height;
   let closedCell = cellsCount;
   const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
-  console.log(nuts);
 
   body.appendChild(main);
   main.appendChild(gameContainer);
@@ -48,6 +61,10 @@ const createGameField = (width, height, nutsCount) => {
 
     gameField.appendChild(gameCell);
   }
+
+  const cellSize = getComputedStyle(document.querySelector('.game-cell')).width.slice(0, 2);
+  console.log(cellSize);
+  gameField.style.width = cellSize * width + 'px';
 
   const cells = [...gameField.children];
 
@@ -127,4 +144,4 @@ const createGameField = (width, height, nutsCount) => {
   };
 };
 
-createGameField(10, 10, 10);
+createGameField(25, 25, 10);

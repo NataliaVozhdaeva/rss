@@ -19,30 +19,29 @@ const gameContainer = document.createElement('div');
 gameContainer.className = 'game-container';
 const gameTop = document.createElement('div');
 gameTop.className = 'game-top';
+body.appendChild(main);
+main.appendChild(gameContainer);
+const timerBtn = document.createElement('button');
+timerBtn.className = 'btn game-top_btn timer';
+const resetBtn = document.createElement('button');
+resetBtn.className = 'btn game-top_btn restart';
+const amountBtn = document.createElement('button');
+amountBtn.className = 'btn game-top_btn amount';
+
+gameContainer.appendChild(gameTop);
+
+gameTop.appendChild(amountBtn);
+gameTop.appendChild(resetBtn);
+gameTop.appendChild(timerBtn);
 
 const createGameField = (width, height, nutsCount) => {
   const gameField = document.createElement('div');
   gameField.className = 'game-field';
-  const timerBtn = document.createElement('button');
-  timerBtn.className = 'btn game-top_btn timer';
-  const resetBtn = document.createElement('button');
-  resetBtn.className = 'btn game-top_btn restart';
-  const amountBtn = document.createElement('button');
-  amountBtn.className = 'btn game-top_btn amount';
+  gameContainer.appendChild(gameField);
 
   const cellsCount = width * height;
   let closedCell = cellsCount;
   const nuts = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, nutsCount);
-
-  body.appendChild(main);
-  main.appendChild(gameContainer);
-
-  gameContainer.appendChild(gameTop);
-  gameContainer.appendChild(gameField);
-
-  gameTop.appendChild(amountBtn);
-  gameTop.appendChild(resetBtn);
-  gameTop.appendChild(timerBtn);
 
   for (let i = 0; i < cellsCount; i++) {
     const gameCell = document.createElement('button');
@@ -156,12 +155,16 @@ const createGameField = (width, height, nutsCount) => {
     const cellIndex = row * width + col;
     return nuts.includes(cellIndex);
   };
+
+  resetBtn.addEventListener('click', function () {
+    gameField.innerHTML = '';
+    createGameField(10, 10, 10);
+  });
 };
 
 createGameField(10, 10, 20);
 
 themeToggler.addEventListener('click', () => {
-  console.log('click');
   if (body.classList.contains('dark')) {
     body.classList.remove('dark');
     themeToggler.textContent = 'Темная тема';

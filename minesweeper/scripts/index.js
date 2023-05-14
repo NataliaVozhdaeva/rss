@@ -155,11 +155,6 @@ const createGameField = (width, height, nutsCount) => {
     const cellIndex = row * width + col;
     return nuts.includes(cellIndex);
   };
-
-  resetBtn.addEventListener('click', function () {
-    gameField.innerHTML = '';
-    createGameField(10, 10, 10);
-  });
 };
 
 createGameField(10, 10, 20);
@@ -172,4 +167,9 @@ themeToggler.addEventListener('click', () => {
     body.classList.add('dark');
     themeToggler.textContent = 'Светлая тема';
   }
+});
+
+resetBtn.addEventListener('click', function () {
+  document.querySelector('.game-field').remove();
+  createGameField(10, 10, 10);
 });

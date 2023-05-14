@@ -34,9 +34,11 @@ body.dark {
 
 .greeting {
   width: 75%;
-  padding: 30px;
+  margin: auto;
+  padding: 50px;
   flex-grow: 3;
 
+  font-size: 1.5rem;
   color: #ffffff;
   background-color: var(--hover);
   border-radius: 2px;
@@ -189,6 +191,7 @@ body.dark {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 
   border: solid 2px;
   border-left-color: var(--dark-side);
@@ -257,4 +260,40 @@ body.dark {
     padding: 15px;
     font-size: 12px;
   }
+}
+
+.firebrick {
+  color: firebrick;
+}
+
+.blue {
+  color: blue;
+}
+
+.dark .blue {
+  color: lightgreen;
+}
+
+.orange {
+  color: orange;
+}
+
+.indigo {
+  color: indigo;
+}
+
+.dark .indigo {
+  color: lightcoral;
+}
+
+.cadetblue {
+  color: cadetblue;
+}
+
+.violet {
+  color: violet;
+}
+
+.wheat {
+  color: wheat;
 }

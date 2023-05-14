@@ -15,12 +15,12 @@ themeToggler = document.createElement('button');
 themeToggler.className = 'btn theme-btn';
 themeToggler.textContent = 'Темная тема';
 gameInfo.appendChild(themeToggler);
+const gameContainer = document.createElement('div');
+gameContainer.className = 'game-container';
+const gameTop = document.createElement('div');
+gameTop.className = 'game-top';
 
 const createGameField = (width, height, nutsCount) => {
-  const gameContainer = document.createElement('div');
-  gameContainer.className = 'game-container';
-  const gameTop = document.createElement('div');
-  gameTop.className = 'game-top';
   const gameField = document.createElement('div');
   gameField.className = 'game-field';
   const timerBtn = document.createElement('button');
@@ -55,7 +55,6 @@ const createGameField = (width, height, nutsCount) => {
   }
 
   const cellSize = getComputedStyle(document.querySelector('.game-cell')).width.slice(0, 2);
-  console.log(cellSize);
   gameField.style.width = cellSize * width + 'px';
 
   const cells = [...gameField.children];
@@ -79,6 +78,31 @@ const createGameField = (width, height, nutsCount) => {
       const count = getCount(row, col);
       if (count !== 0) {
         cell.textContent = getCount(row, col);
+        switch (true) {
+          case cell.textContent == 2:
+            cell.classList.add('firebrick');
+            break;
+          case cell.textContent == 3:
+            cell.classList.add('blue');
+            break;
+          case cell.textContent == 4:
+            cell.classList.add('orange');
+            break;
+          case cell.textContent == 5:
+            cell.classList.add('indigo');
+            break;
+          case cell.textContent == 6:
+            cell.classList.add('cadetblue');
+            break;
+          case cell.textContent == 7:
+            cell.classList.add('violet');
+            break;
+          case cell.textContent == 8:
+            cell.classList.add('wheat');
+            break;
+          default:
+            break;
+        }
       } else {
         for (let c = -1; c <= 1; c++) {
           for (let r = -1; r <= 1; r++) {
@@ -134,7 +158,7 @@ const createGameField = (width, height, nutsCount) => {
   };
 };
 
-createGameField(10, 10, 99);
+createGameField(10, 10, 20);
 
 themeToggler.addEventListener('click', () => {
   console.log('click');

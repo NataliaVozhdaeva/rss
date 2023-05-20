@@ -59,32 +59,32 @@ gameInfo.prepend(difficulty);
 const clickWatcher = document.createElement('div');
 gameInfo.prepend(clickWatcher);
 
-let sec = 0;
-let min = 0;
-let t;
+const createGameField = (width, height, nutsCount) => {
+  let sec = 0;
+  let min = 0;
+  let t;
 
-function tick() {
-  sec++;
-  if (sec >= 60) {
-    sec = 0;
-    min++;
-    if (min >= 60) {
-      min = 0;
-      console.log('too long');
-      return;
+  function tick() {
+    sec++;
+    if (sec >= 60) {
+      sec = 0;
+      min++;
+      if (min >= 60) {
+        min = 0;
+        console.log('too long');
+        return;
+      }
     }
   }
-}
-function add() {
-  tick();
-  timerBtn.textContent = (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
-  timer();
-}
-function timer() {
-  t = setTimeout(add, 1000);
-}
+  function add() {
+    tick();
+    timerBtn.textContent = (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
+    timer();
+  }
+  function timer() {
+    t = setTimeout(add, 1000);
+  }
 
-const createGameField = (width, height, nutsCount) => {
   let clickCounter = 0;
   clickWatcher.textContent = `clicks: ${clickCounter}`;
   const gameField = document.createElement('div');
@@ -126,8 +126,6 @@ const createGameField = (width, height, nutsCount) => {
     closedCell--;
 
     if (isNut(row, col)) {
-      seconds = 0;
-      minutes = 0;
       clearTimeout(t);
       gameMsg.textContent =
         'Вам не нужно открывать тайник, нужно только обозначить место. Придется начинать стажировку сначала...';
@@ -171,8 +169,6 @@ const createGameField = (width, height, nutsCount) => {
         }
       }
       if (closedCell <= nutsCount) {
-        seconds = 0;
-        minutes = 0;
         clearTimeout(t);
         gameMsg.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
         cells.forEach((el) => (el.disabled = true));
@@ -250,6 +246,6 @@ themeToggler.addEventListener('click', () => {
 resetBtn.addEventListener('click', function () {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
-  timerBtn.textContent = '00:00';
   createGameField(width, height, nutsCount);
+  timerBtn.textContent = '00:00';
 });

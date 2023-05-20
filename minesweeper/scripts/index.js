@@ -23,6 +23,8 @@ body.appendChild(main);
 main.appendChild(gameContainer);
 const timerBtn = document.createElement('div');
 timerBtn.className = 'btn game-top_btn timer';
+timerBtn.textContent = '00:00';
+
 const resetBtn = document.createElement('button');
 resetBtn.className = 'btn game-top_btn restart';
 const amountBtn = document.createElement('div');
@@ -33,8 +35,8 @@ gameTop.appendChild(resetBtn);
 gameTop.appendChild(timerBtn);
 
 let nutsCount = 10;
-let width = 15;
-let height = 15;
+let width = 10;
+let height = 10;
 
 const flagsWatcher = document.createElement('div');
 amountBtn.appendChild(flagsWatcher);
@@ -54,12 +56,37 @@ if (width == 10) {
 
 gameInfo.prepend(difficulty);
 
-let clickCounter = 0;
 const clickWatcher = document.createElement('div');
-clickWatcher.textContent = `clicks: ${clickCounter}`;
 gameInfo.prepend(clickWatcher);
 
+let sec = 0;
+let min = 0;
+let t;
+
+function tick() {
+  sec++;
+  if (sec >= 60) {
+    sec = 0;
+    min++;
+    if (min >= 60) {
+      min = 0;
+      console.log('too long');
+      return;
+    }
+  }
+}
+function add() {
+  tick();
+  timerBtn.textContent = (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
+  timer();
+}
+function timer() {
+  t = setTimeout(add, 1000);
+}
+
 const createGameField = (width, height, nutsCount) => {
+  let clickCounter = 0;
+  clickWatcher.textContent = `clicks: ${clickCounter}`;
   const gameField = document.createElement('div');
   gameField.className = 'game-field';
   gameContainer.appendChild(gameField);
@@ -77,7 +104,10 @@ const createGameField = (width, height, nutsCount) => {
     if (nuts.includes(i)) {
       gameCell.classList.add('nut');
     }
-
+    if (width === 25) {
+      gameCell.style.width = '18px';
+      gameCell.style.height = '18px';
+    }
     gameField.appendChild(gameCell);
   }
 
@@ -96,6 +126,9 @@ const createGameField = (width, height, nutsCount) => {
     closedCell--;
 
     if (isNut(row, col)) {
+      seconds = 0;
+      minutes = 0;
+      clearTimeout(t);
       gameMsg.textContent =
         'Вам не нужно открывать тайник, нужно только обозначить место. Придется начинать стажировку сначала...';
       cell.classList.add('ruined');
@@ -138,6 +171,9 @@ const createGameField = (width, height, nutsCount) => {
         }
       }
       if (closedCell <= nutsCount) {
+        seconds = 0;
+        minutes = 0;
+        clearTimeout(t);
         gameMsg.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
         cells.forEach((el) => (el.disabled = true));
       }
@@ -177,6 +213,10 @@ const createGameField = (width, height, nutsCount) => {
   });
 
   gameField.addEventListener('click', (e) => {
+    if (clickCounter === 0) {
+      timer();
+    }
+
     if (e.target.classList.contains('marked')) {
       return;
     }
@@ -210,5 +250,6 @@ themeToggler.addEventListener('click', () => {
 resetBtn.addEventListener('click', function () {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
+  timerBtn.textContent = '00:00';
   createGameField(width, height, nutsCount);
 });

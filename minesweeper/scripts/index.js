@@ -59,6 +59,41 @@ gameInfo.prepend(difficulty);
 const clickWatcher = document.createElement('div');
 gameInfo.prepend(clickWatcher);
 
+const gamePref = document.createElement('div');
+gamePref.className = 'game-pref';
+let fieldSize = ['10 x 10', '15 x 15', '25 x 25'];
+gameInfo.prepend(gamePref);
+
+const gameSizeLabel = document.createElement('label');
+gameSizeLabel.textContent = 'Размер поля';
+const gameSize = document.createElement('select');
+gameSize.className = 'btn size-pref';
+gamePref.append(gameSizeLabel);
+gamePref.append(gameSize);
+fieldSize.forEach((el) => {
+  let option = document.createElement('option');
+  option.textContent = el;
+  gameSize.appendChild(option);
+});
+
+const nutsRange = document.createElement('input');
+nutsRange.setAttribute('type', 'range');
+nutsRange.setAttribute('min', '10');
+nutsRange.setAttribute('max', '99');
+nutsRange.setAttribute('value', '10');
+nutsRange.className = 'range';
+const nutsRangeLabel = document.createElement('label');
+nutsRangeLabel.textContent = 'Количество орешков';
+gamePref.append(nutsRangeLabel);
+gamePref.append(nutsRange);
+const nutsRangeValue = document.createElement('span');
+nutsRangeValue.textContent = nutsRange.value;
+gamePref.append(nutsRangeValue);
+
+nutsRange.addEventListener('input', (e) => {
+  nutsRangeValue.textContent = e.target.value;
+});
+
 const createGameField = (width, height, nutsCount) => {
   let sec = 0;
   let min = 0;

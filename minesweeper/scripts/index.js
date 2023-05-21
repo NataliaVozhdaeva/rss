@@ -11,10 +11,19 @@ gameInfo.className = 'game-info';
 main.appendChild(gameInfo);
 const gameMsg = document.createElement('p');
 gameInfo.prepend(gameMsg);
-themeToggler = document.createElement('button');
+
+const btnContainer = document.createElement('div');
+btnContainer.className = 'btn-container';
+gameInfo.appendChild(btnContainer);
+const themeToggler = document.createElement('button');
 themeToggler.className = 'btn theme-btn';
 themeToggler.textContent = 'Темная тема';
-gameInfo.appendChild(themeToggler);
+btnContainer.appendChild(themeToggler);
+const soundToggler = document.createElement('button');
+soundToggler.className = 'btn sound-btn on';
+soundToggler.textContent = '🔔';
+btnContainer.appendChild(soundToggler);
+
 const gameContainer = document.createElement('div');
 gameContainer.className = 'game-container';
 const gameTop = document.createElement('div');
@@ -24,6 +33,19 @@ main.appendChild(gameContainer);
 const timerBtn = document.createElement('div');
 timerBtn.className = 'btn game-top_btn timer';
 timerBtn.textContent = '00:00';
+
+const winnersTable = document.createElement('div');
+winnersTable.className = 'winners-table';
+winnersTable.innerHTML = '<h4>Последние 10 результатов</h4>';
+let winersArr = [];
+if (localStorage.getItem('winers')) {
+  winersArr = JSON.parse(localStorage.getItem('winers'));
+  console.log(winersArr);
+  winersArr.forEach((el) => {
+    winnersTable.innerHTML += `<span>Имя: ${el.name} Время: ${el.time} Сложность: ${el.difficulty} </span>`;
+  });
+}
+main.appendChild(winnersTable);
 
 const resetBtn = document.createElement('button');
 resetBtn.className = 'btn game-top_btn restart';
@@ -83,10 +105,6 @@ let submitPref = document.createElement('button');
 submitPref.className = 'btn submit-pref';
 submitPref.textContent = 'Изменить сложность';
 gamePref.append(submitPref);
-/* 
-const difficulty = document.createElement('div');
-difficulty.className = 'difficulty';
-gamePref.append(difficulty); */
 
 gameSize.onchange = () => {
   if (gameSize.value == 'EASY') {
@@ -125,15 +143,15 @@ submitPref.addEventListener('click', difficultyHandler);
 
 let t;
 
-const createGameField = (width, height, nutsCount) => {
-  /*   if (width == 10) {
-    difficulty.textContent = 'game difficulty: EASY';
-  } else if (width == 15) {
-    difficulty.textContent = 'game difficulty: MEDIUM';
-  } else {
-    difficulty.textContent = 'game difficulty: HARD';
-  } */
+const sound = (src) => {
+  const audio = new Audio();
+  audio.src = src;
+  if (soundToggler.classList.contains('on')) {
+    audio.play();
+  }
+};
 
+const createGameField = (width, height, nutsCount) => {
   clearTimeout(t);
   let sec = 0;
   let min = 0;
@@ -194,11 +212,14 @@ const createGameField = (width, height, nutsCount) => {
     const cell = cells[index];
     if (!isValid(row, col)) return;
     if (cell.classList.contains('opened')) return;
+    if (cell.classList.contains('marked')) return;
 
     cell.classList.add('opened');
     closedCell--;
 
     if (isNut(row, col)) {
+      sound('./assets/sounds/lose.wav');
+
       clearTimeout(t);
       gameMsg.textContent =
         'Вам не нужно открывать тайник, нужно только обозначить место. Придется начинать стажировку сначала...';
@@ -242,9 +263,22 @@ const createGameField = (width, height, nutsCount) => {
         }
       }
       if (closedCell <= nutsCount) {
+        sound('./assets/sounds/win.wav');
+
         clearTimeout(t);
         gameMsg.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
         cells.forEach((el) => (el.disabled = true));
+
+        let winer = {};
+        winer.name = prompt('Как вас зовут?');
+        winer.time = timerBtn.textContent;
+        winer.clicks = clickCounter;
+        winer.difficulty = gameSize.value;
+        winersArr.push(winer);
+        console.log(winer);
+        console.log(winersArr);
+        localStorage.setItem('winers', JSON.stringify(winersArr));
+        winnersTable.innerHTML += `<span>Имя: ${winer.name} Время: ${winer.time} Сложность: ${winer.difficulty} </span>`;
       }
     }
   };
@@ -266,6 +300,8 @@ const createGameField = (width, height, nutsCount) => {
   };
 
   gameField.addEventListener('contextmenu', (e) => {
+    sound('./assets/sounds/marc.wav');
+
     e.preventDefault();
     if (e.target.classList.contains('opened')) {
       return;
@@ -282,6 +318,7 @@ const createGameField = (width, height, nutsCount) => {
   });
 
   gameField.addEventListener('click', (e) => {
+    sound('./assets/sounds/open.wav');
     if (clickCounter === 0) {
       timer();
     }
@@ -313,6 +350,16 @@ themeToggler.addEventListener('click', () => {
   } else {
     body.classList.add('dark');
     themeToggler.textContent = 'Светлая тема';
+  }
+});
+
+soundToggler.addEventListener('click', () => {
+  if (soundToggler.classList.contains('on')) {
+    soundToggler.classList.remove('on');
+    soundToggler.textContent = '🔕';
+  } else {
+    soundToggler.classList.add('on');
+    soundToggler.textContent = '🔔';
   }
 });
 

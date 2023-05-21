@@ -10,18 +10,21 @@
   --dark-middle-side: #483d8b;
 }
 
+html {
+  height: 100vw;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  height: 100%;
-  background: url('./assets/forest.jpeg') no-repeat;
+  padding: 20px;
+
+  background: url('./assets/light.png') center;
   background-size: cover;
 }
 
 body.dark {
-  background: url('./assets/forest-dark.jpeg') no-repeat center;
-  background-size: cover;
+  background: url('./assets/dark.jpeg') center;
 }
 
 .main {
@@ -50,7 +53,8 @@ body.dark {
   color: #6495ed;
 }
 
-.game-info {
+.game-info,
+.winners-table {
   width: 320px;
   padding: 30px;
   order: 1;
@@ -75,8 +79,15 @@ body.dark {
   order: -1;
 }
 
-.dark .game-info {
+.dark .game-info,
+.dark .winners-table {
   color: #6495ed;
+}
+
+.winners-table {
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
 }
 
 .theme-btn {
@@ -108,6 +119,10 @@ body.dark {
   border-top-color: var(--dark-light-side);
 
   background-color: var(--dark-middle-side);
+}
+
+.winners-table {
+  order: 3;
 }
 
 .game-top {
@@ -272,15 +287,15 @@ body.dark {
     width: 180px;
   }
 
-  .game-cell {
-    width: 18px;
-    height: 18px;
-  }
-
   .greeting,
-  .game-info {
+  .game-info,
+  .winners-table {
     padding: 15px;
     font-size: 12px;
+  }
+
+  .winners-table {
+    width: 100%;
   }
 }
 

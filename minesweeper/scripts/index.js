@@ -34,6 +34,19 @@ const timerBtn = document.createElement('div');
 timerBtn.className = 'btn game-top_btn timer';
 timerBtn.textContent = '00:00';
 
+const winnersTable = document.createElement('div');
+winnersTable.className = 'winners-table';
+winnersTable.innerHTML = '<h4>Последние 10 результатов</h4>';
+let winersArr = [];
+if (localStorage.getItem('winers')) {
+  winersArr = JSON.parse(localStorage.getItem('winers'));
+  console.log(winersArr);
+  winersArr.forEach((el) => {
+    winnersTable.innerHTML += `<span>Имя: ${el.name} Время: ${el.time} Сложность: ${el.difficulty} </span>`;
+  });
+}
+main.appendChild(winnersTable);
+
 const resetBtn = document.createElement('button');
 resetBtn.className = 'btn game-top_btn restart';
 const amountBtn = document.createElement('div');
@@ -199,6 +212,7 @@ const createGameField = (width, height, nutsCount) => {
     const cell = cells[index];
     if (!isValid(row, col)) return;
     if (cell.classList.contains('opened')) return;
+    if (cell.classList.contains('marked')) return;
 
     cell.classList.add('opened');
     closedCell--;
@@ -254,6 +268,17 @@ const createGameField = (width, height, nutsCount) => {
         clearTimeout(t);
         gameMsg.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
         cells.forEach((el) => (el.disabled = true));
+
+        let winer = {};
+        winer.name = prompt('Как вас зовут?');
+        winer.time = timerBtn.textContent;
+        winer.clicks = clickCounter;
+        winer.difficulty = gameSize.value;
+        winersArr.push(winer);
+        console.log(winer);
+        console.log(winersArr);
+        localStorage.setItem('winers', JSON.stringify(winersArr));
+        winnersTable.innerHTML += `<span>Имя: ${winer.name} Время: ${winer.time} Сложность: ${winer.difficulty} </span>`;
       }
     }
   };
@@ -319,7 +344,7 @@ const createGameField = (width, height, nutsCount) => {
 createGameField(width, height, nutsCount);
 
 themeToggler.addEventListener('click', () => {
-  if (themeToggler.classList.contains('dark')) {
+  if (body.classList.contains('dark')) {
     body.classList.remove('dark');
     themeToggler.textContent = 'Темная тема';
   } else {

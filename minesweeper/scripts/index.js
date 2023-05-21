@@ -41,20 +41,16 @@ let height = 10;
 const flagsWatcher = document.createElement('div');
 amountBtn.appendChild(flagsWatcher);
 
-const nutsWatcher = document.createElement('div');
-nutsWatcher.textContent = `nuts: ${nutsCount}`;
-gameInfo.prepend(nutsWatcher);
-
 const clickWatcher = document.createElement('div');
 gameInfo.prepend(clickWatcher);
 
 const gamePref = document.createElement('div');
 gamePref.className = 'game-pref';
-let fieldSize = ['10 x 10', '15 x 15', '25 x 25'];
+let fieldSize = ['EASY', 'MEDIUM', 'HARD'];
 gameInfo.prepend(gamePref);
 
 const gameSizeLabel = document.createElement('label');
-gameSizeLabel.textContent = 'Размер поля';
+gameSizeLabel.textContent = 'Сложность игры';
 const gameSize = document.createElement('select');
 gameSize.className = 'btn size-pref';
 gamePref.append(gameSizeLabel);
@@ -87,18 +83,39 @@ let submitPref = document.createElement('button');
 submitPref.className = 'btn submit-pref';
 submitPref.textContent = 'Изменить сложность';
 gamePref.append(submitPref);
-
+/* 
 const difficulty = document.createElement('div');
 difficulty.className = 'difficulty';
-gamePref.append(difficulty);
+gamePref.append(difficulty); */
+
+gameSize.onchange = () => {
+  if (gameSize.value == 'EASY') {
+    nutsRange.value = 10;
+  } else if (gameSize.value == 'MEDIUM') {
+    nutsRange.value = 45;
+  } else {
+    nutsRange.value = 99;
+  }
+
+  nutsRangeValue.textContent = nutsRange.value;
+};
 
 difficultyHandler = () => {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
 
+  if (gameSize.value == 'EASY') {
+    width = 10;
+    height = 10;
+  } else if (gameSize.value == 'MEDIUM') {
+    width = 15;
+    height = 15;
+  } else {
+    width = 25;
+    height = 25;
+  }
+
   nutsCount = nutsRange.value;
-  width = gameSize.value.slice(0, 2);
-  height = gameSize.value.slice(0, 2);
   timerBtn.textContent = '00:00';
 
   createGameField(width, height, nutsCount);
@@ -109,27 +126,25 @@ submitPref.addEventListener('click', difficultyHandler);
 let t;
 
 const createGameField = (width, height, nutsCount) => {
-  if (width == 10) {
+  /*   if (width == 10) {
     difficulty.textContent = 'game difficulty: EASY';
   } else if (width == 15) {
     difficulty.textContent = 'game difficulty: MEDIUM';
   } else {
     difficulty.textContent = 'game difficulty: HARD';
-  }
+  } */
 
   clearTimeout(t);
   let sec = 0;
   let min = 0;
-  console.log('min ' + min, 'sec ' + sec);
 
   function tick() {
     sec++;
-    if (sec >= 60) {
+    if (sec == 60) {
       sec = 0;
       min++;
-      if (min >= 60) {
+      if (min > 99) {
         min = 0;
-        console.log('too long');
         return;
       }
     }
@@ -162,7 +177,7 @@ const createGameField = (width, height, nutsCount) => {
     if (nuts.includes(i)) {
       gameCell.classList.add('nut');
     }
-    if (width === 25) {
+    if (width == 25) {
       gameCell.style.width = '18px';
       gameCell.style.height = '18px';
     }

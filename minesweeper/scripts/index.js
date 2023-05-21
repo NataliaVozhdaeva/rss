@@ -45,17 +45,6 @@ const nutsWatcher = document.createElement('div');
 nutsWatcher.textContent = `nuts: ${nutsCount}`;
 gameInfo.prepend(nutsWatcher);
 
-const difficulty = document.createElement('div');
-if (width == 10) {
-  difficulty.textContent = 'game difficulty: EASY';
-} else if (width == 15) {
-  difficulty.textContent = 'game difficulty: MEDIUM';
-} else {
-  difficulty.textContent = 'game difficulty: HARD';
-}
-
-gameInfo.prepend(difficulty);
-
 const clickWatcher = document.createElement('div');
 gameInfo.prepend(clickWatcher);
 
@@ -94,7 +83,38 @@ nutsRange.addEventListener('input', (e) => {
   nutsRangeValue.textContent = e.target.value;
 });
 
+let submitPref = document.createElement('button');
+submitPref.className = 'btn submit-pref';
+submitPref.textContent = 'Изменить сложность';
+gamePref.append(submitPref);
+
+difficultyHandler = () => {
+  document.querySelector('.game-field').remove();
+  gameMsg.textContent = '';
+  document.querySelector('.difficulty').remove();
+
+  nutsCount = nutsRange.value;
+  width = gameSize.value.slice(0, 2);
+  height = gameSize.value.slice(0, 2);
+  timerBtn.textContent = '00:00';
+
+  createGameField(width, height, nutsCount);
+};
+
+submitPref.addEventListener('click', difficultyHandler);
+
 const createGameField = (width, height, nutsCount) => {
+  const difficulty = document.createElement('div');
+  difficulty.className = 'difficulty';
+  if (width == 10) {
+    difficulty.textContent = 'game difficulty: EASY';
+  } else if (width == 15) {
+    difficulty.textContent = 'game difficulty: MEDIUM';
+  } else {
+    difficulty.textContent = 'game difficulty: HARD';
+  }
+  gamePref.append(difficulty);
+
   let sec = 0;
   let min = 0;
   let t;
@@ -281,6 +301,8 @@ themeToggler.addEventListener('click', () => {
 resetBtn.addEventListener('click', function () {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
+  document.querySelector('.difficulty').remove();
+
   createGameField(width, height, nutsCount);
   timerBtn.textContent = '00:00';
 });

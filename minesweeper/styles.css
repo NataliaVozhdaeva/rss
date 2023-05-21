@@ -175,6 +175,12 @@ body.dark {
   flex-grow: 1;
 }
 
+.amount:hover,
+.timer:hover {
+  background-color: var(--middle-side);
+  cursor: default;
+}
+
 .amount {
   column-gap: 15px;
 }
@@ -320,7 +326,8 @@ body.dark {
   text-align: center;
 }
 
-.size-pref:hover {
+.size-pref:hover,
+.submit-pref:hover {
   color: #ffffff;
 }
 

@@ -88,10 +88,13 @@ submitPref.className = 'btn submit-pref';
 submitPref.textContent = 'Изменить сложность';
 gamePref.append(submitPref);
 
+const difficulty = document.createElement('div');
+difficulty.className = 'difficulty';
+gamePref.append(difficulty);
+
 difficultyHandler = () => {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
-  document.querySelector('.difficulty').remove();
 
   nutsCount = nutsRange.value;
   width = gameSize.value.slice(0, 2);
@@ -103,9 +106,9 @@ difficultyHandler = () => {
 
 submitPref.addEventListener('click', difficultyHandler);
 
+let t;
+
 const createGameField = (width, height, nutsCount) => {
-  const difficulty = document.createElement('div');
-  difficulty.className = 'difficulty';
   if (width == 10) {
     difficulty.textContent = 'game difficulty: EASY';
   } else if (width == 15) {
@@ -113,11 +116,11 @@ const createGameField = (width, height, nutsCount) => {
   } else {
     difficulty.textContent = 'game difficulty: HARD';
   }
-  gamePref.append(difficulty);
 
+  clearTimeout(t);
   let sec = 0;
   let min = 0;
-  let t;
+  console.log('min ' + min, 'sec ' + sec);
 
   function tick() {
     sec++;
@@ -301,7 +304,6 @@ themeToggler.addEventListener('click', () => {
 resetBtn.addEventListener('click', function () {
   document.querySelector('.game-field').remove();
   gameMsg.textContent = '';
-  document.querySelector('.difficulty').remove();
 
   createGameField(width, height, nutsCount);
   timerBtn.textContent = '00:00';

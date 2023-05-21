@@ -181,6 +181,11 @@ body.dark {
   cursor: default;
 }
 
+.dark .amount:hover,
+.dark .timer:hover {
+  background-color: var(--dark-middle-side);
+}
+
 .amount {
   column-gap: 15px;
 }
@@ -404,4 +409,9 @@ body.dark {
 
 .dark .range::-moz-range-thumb {
   background: var(--dark-middle-side);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
 }

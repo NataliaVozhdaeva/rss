@@ -11,10 +11,19 @@ gameInfo.className = 'game-info';
 main.appendChild(gameInfo);
 const gameMsg = document.createElement('p');
 gameInfo.prepend(gameMsg);
-themeToggler = document.createElement('button');
+
+const btnContainer = document.createElement('div');
+btnContainer.className = 'btn-container';
+gameInfo.appendChild(btnContainer);
+const themeToggler = document.createElement('button');
 themeToggler.className = 'btn theme-btn';
 themeToggler.textContent = 'Темная тема';
-gameInfo.appendChild(themeToggler);
+btnContainer.appendChild(themeToggler);
+const soundToggler = document.createElement('button');
+soundToggler.className = 'btn sound-btn on';
+soundToggler.textContent = '🔔';
+btnContainer.appendChild(soundToggler);
+
 const gameContainer = document.createElement('div');
 gameContainer.className = 'game-container';
 const gameTop = document.createElement('div');
@@ -83,10 +92,6 @@ let submitPref = document.createElement('button');
 submitPref.className = 'btn submit-pref';
 submitPref.textContent = 'Изменить сложность';
 gamePref.append(submitPref);
-/* 
-const difficulty = document.createElement('div');
-difficulty.className = 'difficulty';
-gamePref.append(difficulty); */
 
 gameSize.onchange = () => {
   if (gameSize.value == 'EASY') {
@@ -125,15 +130,15 @@ submitPref.addEventListener('click', difficultyHandler);
 
 let t;
 
-const createGameField = (width, height, nutsCount) => {
-  /*   if (width == 10) {
-    difficulty.textContent = 'game difficulty: EASY';
-  } else if (width == 15) {
-    difficulty.textContent = 'game difficulty: MEDIUM';
-  } else {
-    difficulty.textContent = 'game difficulty: HARD';
-  } */
+const sound = (src) => {
+  const audio = new Audio();
+  audio.src = src;
+  if (soundToggler.classList.contains('on')) {
+    audio.play();
+  }
+};
 
+const createGameField = (width, height, nutsCount) => {
   clearTimeout(t);
   let sec = 0;
   let min = 0;
@@ -199,6 +204,8 @@ const createGameField = (width, height, nutsCount) => {
     closedCell--;
 
     if (isNut(row, col)) {
+      sound('./assets/sounds/lose.wav');
+
       clearTimeout(t);
       gameMsg.textContent =
         'Вам не нужно открывать тайник, нужно только обозначить место. Придется начинать стажировку сначала...';
@@ -242,6 +249,8 @@ const createGameField = (width, height, nutsCount) => {
         }
       }
       if (closedCell <= nutsCount) {
+        sound('./assets/sounds/win.wav');
+
         clearTimeout(t);
         gameMsg.textContent = 'Вы нашли все белочкины тайники и повесили объявления. Поздравляем!';
         cells.forEach((el) => (el.disabled = true));
@@ -266,6 +275,8 @@ const createGameField = (width, height, nutsCount) => {
   };
 
   gameField.addEventListener('contextmenu', (e) => {
+    sound('./assets/sounds/marc.wav');
+
     e.preventDefault();
     if (e.target.classList.contains('opened')) {
       return;
@@ -282,6 +293,7 @@ const createGameField = (width, height, nutsCount) => {
   });
 
   gameField.addEventListener('click', (e) => {
+    sound('./assets/sounds/open.wav');
     if (clickCounter === 0) {
       timer();
     }
@@ -307,12 +319,22 @@ const createGameField = (width, height, nutsCount) => {
 createGameField(width, height, nutsCount);
 
 themeToggler.addEventListener('click', () => {
-  if (body.classList.contains('dark')) {
+  if (themeToggler.classList.contains('dark')) {
     body.classList.remove('dark');
     themeToggler.textContent = 'Темная тема';
   } else {
     body.classList.add('dark');
     themeToggler.textContent = 'Светлая тема';
+  }
+});
+
+soundToggler.addEventListener('click', () => {
+  if (soundToggler.classList.contains('on')) {
+    soundToggler.classList.remove('on');
+    soundToggler.textContent = '🔕';
+  } else {
+    soundToggler.classList.add('on');
+    soundToggler.textContent = '🔔';
   }
 });
 

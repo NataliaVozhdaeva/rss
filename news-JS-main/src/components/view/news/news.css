@@ -1,3 +1,9 @@
+.news {
+    flex-grow: 1;
+    height: 100%;
+    overflow: scroll;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;

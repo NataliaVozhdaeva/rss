@@ -1,4 +1,6 @@
 body {
+    width: 99vw;
+    margin: auto;
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
@@ -8,16 +10,32 @@ header {
     padding: 10px 30px;
 }
 
+main {
+    height: calc(100vh - 225px);
+    overflow: scroll;
+    margin: auto;
+    display: flex;
+}
+
 header h1 {
     font-size: 40px;
     font-weight: 800;
 }
 
 footer {
-    height: 100px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+    height: 100px;
     align-items: center;
-    justify-content: center;
+}
+footer .link {
+    text-decoration: none;
+    color: #fff;
+}
+footer .link:hover {
+    color: #333;
 }
 footer .copyright {
     font-size: 14px;
@@ -32,4 +50,10 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+
+@media only screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
 }

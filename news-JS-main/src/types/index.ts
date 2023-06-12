@@ -1,16 +1,10 @@
-interface Isourse {
-    status?: string;
-    sources?: [
-        {
-            id: string;
-            name: string;
-            description: string;
-            url: string;
-            category: string;
-            language: string;
-            country: string;
-        }
-    ];
+interface Isourses {
+    id: string;
+    name: string;
+    description: string;
+    url: string;
+    category: string;
+    language: string;
 }
 
 interface IArticle {
@@ -64,4 +58,4 @@ interface Inews {
     urlToImage: string;
 }
 
-export { Iheadline, IArticle, Isourse, Inews };
+export { Iheadline, IArticle, Isourses, Inews };

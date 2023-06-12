@@ -1,4 +1,4 @@
-interface Isourses {
+interface Isource {
     id: string;
     name: string;
     description: string;
@@ -7,24 +7,23 @@ interface Isourses {
     language: string;
 }
 
-interface IArticle {
+interface IsourceArr {
     status: string;
-    totalResults: number;
-    articles: [
-        {
-            source: {
-                id: string;
-                name: string;
-            };
-            author: string;
-            title: string;
-            description: string;
-            url: string;
-            urlToImage: string;
-            publishedAt: string;
-            content: string;
-        }
-    ];
+    sources: Isource[];
+}
+
+interface IArticle {
+    source: {
+        id: string;
+        name: string;
+    };
+    author: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
 }
 
 interface Iheadline {
@@ -58,4 +57,10 @@ interface Inews {
     urlToImage: string;
 }
 
-export { Iheadline, IArticle, Isourses, Inews };
+interface InewsArr {
+    articles: IArticle[];
+    status: string;
+    totalResults: number;
+}
+
+export { Iheadline, IArticle, Isource, Inews, IsourceArr, InewsArr };

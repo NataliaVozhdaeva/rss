@@ -63,4 +63,8 @@ interface InewsArr {
     totalResults: number;
 }
 
-export { Iheadline, IArticle, Isource, Inews, IsourceArr, InewsArr };
+interface IOptions {
+    [key: string]: string;
+}
+
+export { Iheadline, IArticle, Isource, Inews, IsourceArr, InewsArr, IOptions };

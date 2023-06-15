@@ -1,9 +1,11 @@
 import AppLoader from './appLoader';
+import { InewsArr, IsourceArr } from '../../types/index';
 
-type callbackFunction = () => void;
+type CallbackSourse = (data?: IsourceArr) => void;
+type CallbackNews = (data?: InewsArr) => void;
 
 class AppController extends AppLoader {
-    getSources(callback: callbackFunction) {
+    getSources(callback: CallbackSourse) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -12,7 +14,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: callbackFunction) {
+    getNews(e: Event, callback: CallbackNews) {
         let target = <HTMLElement>e.target;
         const newsContainer = <HTMLElement>e.currentTarget;
 
@@ -34,7 +36,6 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            //if (!target.parentNode) throw TypeError;
             target = <HTMLElement>target.parentNode;
         }
     }

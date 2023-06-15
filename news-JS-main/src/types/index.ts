@@ -67,4 +67,9 @@ interface IOptions {
     [key: string]: string;
 }
 
-export { Iheadline, IArticle, Isource, Inews, IsourceArr, InewsArr, IOptions };
+enum Endpoints {
+    Sources = 'sources',
+    Everything = 'everything',
+}
+
+export { Iheadline, IArticle, Isource, Inews, IsourceArr, InewsArr, IOptions, Endpoints };

@@ -1,20 +1,20 @@
 import AppLoader from './appLoader';
-import { InewsArr, IsourceArr } from '../../types/index';
+import { InewsArr, IsourceArr, Endpoints } from '../../types/index';
 
 type CallbackSourse = (data?: IsourceArr) => void;
 type CallbackNews = (data?: InewsArr) => void;
 
 class AppController extends AppLoader {
-    getSources(callback: CallbackSourse) {
+    public getSources(callback: CallbackSourse) {
         super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: Endpoints.Sources,
             },
             callback
         );
     }
 
-    getNews(e: Event, callback: CallbackNews) {
+    public getNews(e: Event, callback: CallbackNews) {
         let target = <HTMLElement>e.target;
         const newsContainer = <HTMLElement>e.currentTarget;
 

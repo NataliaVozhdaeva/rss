@@ -1,0 +1,197 @@
+:root{
+  --back: #483D8B;
+  --text: #DCDCDC;
+  --part-back: #1c1742;
+  --container-top: #0a0919;
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  color: var(--text);
+  background-color: var(--back);
+}
+
+a, a:visited{
+  text-decoration: none;
+  color: var(--text)
+}
+
+a:hover{
+  color: #fff
+}
+
+.btn{
+  padding: 5px 10px;
+
+  border: none;
+
+  transition: 0.5s;
+}
+
+.btn:hover{
+  color: #fff;
+  background-color: var(--container-top);
+  cursor: pointer;
+}
+
+.wrapper{
+  max-width: 1440px;
+  margin: auto;
+  padding: 50px 0 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header{
+  width: 100%;
+}
+
+.note{
+ font-size: 12px;
+}
+
+.aside{
+  width: 25%;
+  max-height: 100%;
+  padding: 25px;
+}
+
+.aside, .game-part, .css-container, .html-container{
+  border-radius: 5px;
+  background-color: var(--part-back);
+}
+
+.level{
+  counter-reset: level 0;
+
+  padding-left: 70px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.level-item{
+  counter-increment: level 1;
+
+  padding-left: 20px;
+}
+
+.level-item:hover{
+  cursor: pointer;
+  color: #fff;
+}
+
+.level-item::marker{
+  content:  counter(level)' level';
+}
+  
+.main{
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.game-part{
+  width: 100%;
+  padding: 25px;
+}
+
+.game-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.active{
+  animation: blink-cat linear 2s infinite;
+}
+
+@keyframes blink-cat {
+  50% {
+    opacity:50%;
+  }
+}
+
+.css-container, .html-container{
+ flex-grow: 1;
+}
+
+.top{
+  padding: 25px;
+  padding-bottom: 20px;
+  background-color: var(--container-top);
+}
+
+.code{
+  padding: 25px;
+}
+
+.form{
+  display: flex;
+  justify-content: space-between;
+}
+
+.input{
+  width: 75%;
+  
+  opacity: 0.8;
+  border: none;
+
+  animation: blink-animation linear 3s infinite;
+}
+
+.input:focus{
+  outline: none;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 20%;
+  }
+}
+
+.html-view{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.tag{
+  transition: 0.3s;
+}
+
+.tag:hover{
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.footer{
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.link-RSS{
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: auto;
+}
+
+#Layer_1{
+  position: relative;
+  z-index: 2;
+}
+
+.link-RSS:hover{
+  background-color: #ffffff26;
+}

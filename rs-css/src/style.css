@@ -259,7 +259,6 @@ a:hover {
 
 .popup {
     position: absolute;
-    width: 100px;
     bottom: 0;
     height: auto;
     padding: 5px;

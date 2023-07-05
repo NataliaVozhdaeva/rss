@@ -1,4 +1,5 @@
 import './style.css';
-import { interactivity } from './components/app/app';
+import { interactivity, init } from './components/app/app';
 
+init(0);
 interactivity();

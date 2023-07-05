@@ -42,7 +42,7 @@ a:hover {
 .wrapper {
     max-width: 1440px;
     margin: auto;
-    padding: 50px 0 0;
+    padding: 50px 10px 0;
 
     display: grid;
     gap: 10px;
@@ -112,6 +112,7 @@ a:hover {
 
 .game-part {
     width: 100%;
+    min-height: 218px;
     padding: 25px;
 }
 
@@ -122,6 +123,7 @@ a:hover {
 }
 
 .el {
+    position: relative;
     width: 200px;
     height: 300px;
 
@@ -214,7 +216,7 @@ a:hover {
 }
 
 .footer {
-    width: 100%;
+    grid-column: 1 / 5;
     margin-top: 50px;
     display: flex;
     justify-content: space-around;
@@ -239,7 +241,7 @@ a:hover {
 
 .disappear {
     opacity: 0;
-    transition: 3s;
+    transition: 1s;
 }
 
 .shake {
@@ -252,5 +254,53 @@ a:hover {
     }
     75% {
         transform: rotate(-10deg);
+    }
+}
+
+.popup {
+    position: absolute;
+    width: 100px;
+    bottom: 0;
+    height: auto;
+    padding: 5px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.done {
+    color: lightgreen;
+}
+
+.current {
+    color: lightpink;
+}
+
+@media only screen and (max-width: 1000px) {
+    .wrapper {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        max-width: 98vw;
+        margin: auto;
+    }
+
+    .level {
+        max-height: 130px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .game-container {
+        height: 150px;
+    }
+
+    .el {
+        width: 150px;
+        height: auto;
+    }
+
+    .cat {
+        width: auto;
+        height: 100px;
     }
 }

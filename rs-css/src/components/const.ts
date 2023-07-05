@@ -1,1 +1,1 @@
-export const answears: string[] = ['cat'];
+export const answears: string[] = ['cat', '.gray'];

@@ -106,13 +106,14 @@ a:hover {
     grid-column: 2/3;
     display: flex;
     gap: 10px;
-    flex-grow: 1;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .game-part {
     width: 100%;
     min-height: 218px;
+    height: 450px;
     padding: 25px;
 }
 
@@ -274,6 +275,11 @@ a:hover {
     color: lightpink;
 }
 
+.in {
+    position: absolute;
+    bottom: 70px;
+}
+
 @media only screen and (max-width: 1000px) {
     .wrapper {
         box-sizing: border-box;
@@ -294,6 +300,7 @@ a:hover {
     }
 
     .el {
+        position: relative;
         width: 150px;
         height: auto;
     }

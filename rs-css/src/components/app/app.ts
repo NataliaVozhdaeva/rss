@@ -1,21 +1,28 @@
 import { answears } from '../const';
-import { htmlFor1, htmlFor2 } from '../../view/code-levels';
-import { layuotFor1, layuotFor2 } from '../../view/layot-levels';
-import { taskFor1, taskFor2 } from '../../view/task-levels';
+import { htmlFor1, htmlFor2, htmlFor3, htmlFor4, htmlFor5 } from '../../view/code-levels';
+import { layuotFor1, layuotFor2, layuotFor3, layuotFor4, layuotFor5 } from '../../view/layot-levels';
+import { taskFor1, taskFor2, taskFor3, taskFor4, taskFor5 } from '../../view/task-levels';
 
-const codeComponents = [htmlFor1(), htmlFor2()];
-const layioutComponents = [layuotFor1(), layuotFor2()];
-const taskComponents = [taskFor1(), taskFor2()];
+const codeComponents = [htmlFor1(), htmlFor2(), htmlFor3(), htmlFor4(), htmlFor5()];
+const layioutComponents = [layuotFor1(), layuotFor2(), layuotFor3(), layuotFor4(), layuotFor5()];
+const taskComponents = [taskFor1(), taskFor2(), taskFor3(), taskFor4(), taskFor5()];
 let currentLevel = 0;
-
+const level = document.querySelector<HTMLElement>('.level');
 const levels = document.querySelectorAll<HTMLElement>('.level-item');
+
+level?.addEventListener('click', (e): void => {
+    if (!e.target) throw TypeError;
+    const levelName = e.target as HTMLButtonElement;
+    currentLevel = Number(levelName.dataset.num);
+    init(currentLevel);
+    interactivity();
+});
 
 export function init(currentLevel: number): void {
     const htmlEditor = document.querySelector<HTMLElement>('.html-view');
     const taskContainer = document.querySelector<HTMLElement>('.task');
     const layout = document.querySelector<HTMLElement>('.game-part');
     levels[currentLevel].classList.add('current');
-    console.log(layout);
 
     if (!htmlEditor || !layout || !taskContainer) throw TypeError;
 
@@ -74,9 +81,14 @@ function checkAnswear(): void {
     const htmlEditor = document.querySelector<HTMLElement>('.html-view');
     const layout = document.querySelector<HTMLElement>('.game-part');
     const task = document.querySelector<HTMLElement>('.task');
+
     if (!input) throw TypeError;
 
-    if (input.value === answears[currentLevel]) {
+    if (
+        input.value === answears[currentLevel] ||
+        input.value === answears[currentLevel][0] ||
+        input.value === answears[currentLevel][1]
+    ) {
         input.value = '';
         el.forEach((element) => element.classList.add('disappear'));
         levels[currentLevel].classList.remove('current');

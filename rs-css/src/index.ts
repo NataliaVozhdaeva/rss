@@ -1,5 +1,5 @@
 import './style.css';
-import { interactivity, init } from './components/app/app';
+import Game from './components/app/app';
 
-init(0);
-interactivity();
+const game = new Game();
+game.init();

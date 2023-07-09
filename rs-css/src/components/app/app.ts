@@ -1,11 +1,42 @@
-import { answears } from '../const';
-import { htmlFor1, htmlFor2, htmlFor3, htmlFor4, htmlFor5 } from '../../view/code-levels';
-import { layuotFor1, layuotFor2, layuotFor3, layuotFor4, layuotFor5 } from '../../view/layot-levels';
-import { taskFor1, taskFor2, taskFor3, taskFor4, taskFor5 } from '../../view/task-levels';
+//import { answears } from '../const';
+import { CodeView } from '../../view/code-levels';
+import { LayoutView } from '../../view/layot-levels';
+import { TaskView } from '../../view/task-levels';
+import { tasks, codes, layouts } from '../const';
 
-const codeComponents = [htmlFor1(), htmlFor2(), htmlFor3(), htmlFor4(), htmlFor5()];
-const layioutComponents = [layuotFor1(), layuotFor2(), layuotFor3(), layuotFor4(), layuotFor5()];
-const taskComponents = [taskFor1(), taskFor2(), taskFor3(), taskFor4(), taskFor5()];
+export default class Game {
+    levels = document.querySelectorAll<HTMLElement>('.level-item');
+    currentLevel = 0;
+    taskComponents: object[] = tasks;
+    taskContainer;
+    taskContent = this.taskComponents[this.currentLevel];
+    task = '';
+    codeComponents: object[] = codes;
+    htmlEditor;
+    htmlContent = this.codeComponents[this.currentLevel];
+    layout;
+    layoutComponents: object[] = layouts;
+    layoutContent = this.layoutComponents[this.currentLevel];
+
+    constructor() {
+        this.taskContainer = document.querySelector<HTMLElement>('.task');
+        this.htmlEditor = document.querySelector<HTMLElement>('.html-view');
+        this.layout = document.querySelector<HTMLElement>('.game-part');
+    }
+
+    init(): void {
+        this.levels[this.currentLevel].classList.add('current');
+
+        if (!this.htmlEditor || !this.layout || !this.taskContainer) throw TypeError;
+        console.log(this.layoutContent);
+        console.log(this.taskContent);
+
+        this.layout.innerHTML = new LayoutView(this.layoutContent).render;
+        this.htmlEditor.innerHTML = new CodeView(this.htmlContent).render;
+        this.taskContainer.innerHTML = new TaskView(this.taskContent).render;
+    }
+}
+/*
 let currentLevel = 0;
 const level = document.querySelector<HTMLElement>('.level');
 const levels = document.querySelectorAll<HTMLElement>('.level-item');
@@ -28,7 +59,7 @@ export function init(currentLevel: number): void {
 
     htmlEditor.innerHTML = codeComponents[currentLevel];
     layout.innerHTML = layioutComponents[currentLevel];
-    taskContainer.innerHTML = taskComponents[currentLevel];
+     taskContainer.innerHTML = taskComponents[currentLevel];
 }
 
 export function interactivity(): void {
@@ -113,6 +144,4 @@ function checkAnswear(): void {
             }, 1500);
         });
     }
-}
-
-export default { interactivity, checkAnswear };
+} */

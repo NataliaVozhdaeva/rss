@@ -25,18 +25,23 @@ export default class Game {
         this.input = document.querySelector<HTMLInputElement>('.input');
         this.okBtn = document.querySelector<HTMLElement>('.btn');
 
-        this.levels[this.currentLevel].classList.add('current');
         this.okBtn?.addEventListener('click', () => this.checkAnswear());
         document.addEventListener('keyup', (event) => {
             if (event.code === 'Enter') {
                 this.checkAnswear();
             }
         });
+
+        this.levels.forEach((el) =>
+            el.addEventListener('click', (e): void => {
+                this.changeLevel(e);
+            })
+        );
     }
 
     init(currentLevel: number): void {
         if (!this.htmlEditor || !this.layout || !this.taskContainer) throw TypeError;
-
+        this.levels[this.currentLevel].classList.add('current');
         this.layout.innerHTML = new LayoutView(this.layoutComponents[currentLevel]).render;
         this.htmlEditor.innerHTML = new CodeView(this.codeComponents[currentLevel]).render;
         this.taskContainer.innerHTML = new TaskView(this.taskComponents[currentLevel]).render;
@@ -51,7 +56,6 @@ export default class Game {
             this.input.value === this.answearsArr[this.currentLevel] ||
             this.answearsArr[this.currentLevel].includes(this.input.value)
         ) {
-            console.log(this.answearsArr[this.currentLevel]);
             this.input.value = '';
             this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('disappear'));
             this.levels[this.currentLevel].classList.remove('current');
@@ -76,7 +80,15 @@ export default class Game {
                 this.layout.querySelectorAll('.el').forEach((element): void => element.classList.remove('shake'));
             }, 1500);
         }
-        console.log(this.answearsArr[this.currentLevel], false);
+    }
+
+    changeLevel(e: Event) {
+        if (!e.target) throw TypeError;
+        const levelName = e.target as HTMLButtonElement;
+        this.levels[this.currentLevel].classList.remove('current');
+        this.currentLevel = Number(levelName.dataset.num);
+        this.init(this.currentLevel);
+        //interactivity();
     }
 }
 

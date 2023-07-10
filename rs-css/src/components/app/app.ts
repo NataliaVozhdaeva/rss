@@ -8,18 +8,14 @@ export default class Game {
     currentLevel = 0;
     taskComponents: object[] = tasks;
     taskContainer;
-    //taskContent = this.taskComponents[this.currentLevel];
     task = '';
     codeComponents: object[] = codes;
     htmlEditor;
-    //htmlContent = this.codeComponents[this.currentLevel];
     layout;
     layoutComponents: object[] = layouts;
-    //layoutContent = this.layoutComponents[this.currentLevel];
     input;
     okBtn;
     answearsArr: string[] = answears;
-    answears: string;
 
     constructor() {
         this.taskContainer = document.querySelector<HTMLElement>('.task');
@@ -30,7 +26,7 @@ export default class Game {
         this.okBtn = document.querySelector<HTMLElement>('.btn');
 
         this.levels[this.currentLevel].classList.add('current');
-
+        this.okBtn?.addEventListener('click', () => this.checkAnswear());
         /*  document.addEventListener('keyup', function (event) {
         if (event.code === 'Enter') {
             checkAnswear();
@@ -44,26 +40,24 @@ export default class Game {
         this.layout.innerHTML = new LayoutView(this.layoutComponents[currentLevel]).render;
         this.htmlEditor.innerHTML = new CodeView(this.codeComponents[currentLevel]).render;
         this.taskContainer.innerHTML = new TaskView(this.taskComponents[currentLevel]).render;
-
-        this.okBtn?.addEventListener('click', () => this.checkAnswear());
     }
 
     checkAnswear(): void {
         this.input = document.querySelector<HTMLInputElement>('.input');
-        this.answears = this.answearsArr[this.currentLevel];
 
         if (!this.input || !this.layout) throw TypeError;
 
-        if (this.input.value === this.answears || this.answears.includes(this.input.value)) {
-            console.log(this.answears);
+        if (
+            this.input.value === this.answearsArr[this.currentLevel] ||
+            this.answearsArr[this.currentLevel].includes(this.input.value)
+        ) {
+            console.log(this.answearsArr[this.currentLevel]);
             this.input.value = '';
             this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('disappear'));
             this.levels[this.currentLevel].classList.remove('current');
             this.levels[this.currentLevel].classList.add('done');
             this.currentLevel += 1;
             this.levels[this.currentLevel].classList.add('current');
-
-            //console.log(this.currentLevel);
 
             setTimeout(() => {
                 if (!this.htmlEditor || !this.layout || !this.taskContainer) throw TypeError;
@@ -85,7 +79,7 @@ export default class Game {
                 }, 1500);
                 
             }) */
-            console.log(this.answears, false);
+            console.log(this.answearsArr[this.currentLevel], false);
         }
     }
 }

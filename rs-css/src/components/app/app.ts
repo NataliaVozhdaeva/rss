@@ -1,7 +1,7 @@
 import { CodeView } from '../../view/code-levels';
 import { LayoutView } from '../../view/layot-levels';
 import { TaskView } from '../../view/task-levels';
-import { answears, tasks, codes, layouts } from '../const';
+import { answers, tasks, codes, layouts } from '../const';
 
 export default class Game {
     levels = document.querySelectorAll<HTMLElement>('.level-item');
@@ -15,7 +15,7 @@ export default class Game {
     layoutComponents: object[] = layouts;
     input;
     okBtn;
-    answearsArr: string[] = answears;
+    answersArr: string[] = answers;
 
     constructor() {
         this.taskContainer = document.querySelector<HTMLElement>('.task');
@@ -25,10 +25,10 @@ export default class Game {
         this.input = document.querySelector<HTMLInputElement>('.input');
         this.okBtn = document.querySelector<HTMLElement>('.btn');
 
-        this.okBtn?.addEventListener('click', (): void => this.checkAnswear());
+        this.okBtn?.addEventListener('click', (): void => this.checkanswer());
         document.addEventListener('keyup', (event): void => {
             if (event.code === 'Enter') {
-                this.checkAnswear();
+                this.checkanswer();
             }
         });
 
@@ -48,14 +48,14 @@ export default class Game {
         this.interactivity();
     }
 
-    checkAnswear(): void {
+    checkanswer(): void {
         this.input = document.querySelector<HTMLInputElement>('.input');
 
         if (!this.input || !this.layout) throw TypeError;
 
         if (
-            this.input.value === this.answearsArr[this.currentLevel] ||
-            this.answearsArr[this.currentLevel].includes(this.input.value)
+            this.input.value === this.answersArr[this.currentLevel] ||
+            this.answersArr[this.currentLevel].includes(this.input.value)
         ) {
             this.input.value = '';
             this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('disappear'));
@@ -74,10 +74,13 @@ export default class Game {
             }, 1500);
         } else {
             this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('shake'));
+            //код 76 строки повторяет 61-ую (кроме имени класса). Кажется, что так быть не должно.
+            //Но собрать эту коллекцию в конструкторе или методе инит (чтоб один раз) у меня не поучилось - либо длина коллекции 0, либо на типы ругался линтер.
+            //Как надо догадаться не получилось, буду признательна за подсказку, что доучивать.
             this.input.value = '';
             setTimeout(() => {
                 if (!this.layout) throw TypeError;
-                this.layout.querySelectorAll('.el').forEach((element): void => element.classList.remove('shake'));
+                this.layout.querySelectorAll('.el').forEach((element): void => element.classList.remove('shake')); // ну и тут та же проблема что в комменте выше.
             }, 1500);
         }
     }

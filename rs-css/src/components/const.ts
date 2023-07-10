@@ -1,4 +1,4 @@
-export const answears: string[] = [
+export const answers: string[] = [
     'cat',
     '.gray',
     '*',
@@ -73,7 +73,15 @@ export const codes: object[] = [
     },
     {
         code:
-            '<div class="tag">&lt;cushion&gt;</div><div class="tag inside">\u00A0\u00A0\u00A0\u00A0&lt;cat /&gt;</div><div class="tag">&lt;/cushion&gt;</div><div class="tag">&lt;cushion&gt;</div><div class="tag">&lt;/cushion&gt;</div><div class="tag">&lt;cat class="gray"/&gt;</div>',
+            // `<div class="tag">&lt;cushion&gt;</div> <div class="tag inside">\u00A0\u00A0\u00A0\u00A0&lt;cat /&gt;</div><div class="tag">&lt;/cushion&gt;</div><div class="tag">&lt;cushion&gt;</div><div class="tag">&lt;/cushion&gt;</div><div class="tag">&lt;cat class="gray"/&gt;</div>`,
+            `<div class="tag">
+                &lt;cushion&gt;
+                    <div class="tag inside">\u00A0\u00A0\u00A0\u00A0&lt;cat /&gt;</div>
+                &lt; /cushion&gt;
+            </div>     
+            
+            <div class="tag">&lt;cushion&gt;&lt;/cushion&gt;</div>
+            <div class="tag">&lt;cat class="gray"/&gt;</div>`,
     },
 ];
 

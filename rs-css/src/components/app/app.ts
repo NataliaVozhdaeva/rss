@@ -72,7 +72,7 @@ export default class Game {
                 if (!this.htmlEditor || !this.taskContainer) throw TypeError;
                 this.htmlEditor.innerHTML = '';
                 this.layout.innerHTML = '';
-                this.taskContainer.innerHTML = '';
+                this.taskContainer.innerHTML = 'Now you know about css-selectors more!';
 
                 const close = document.querySelector<HTMLElement>('.close');
                 if (!close) throw TypeError;

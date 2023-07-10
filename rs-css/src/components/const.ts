@@ -7,6 +7,8 @@ export const answers: string[] = [
     'cushion cat cushion > cat',
     'previous + cat.black, previous + .black .previous + cat',
     'cushion:first-child, cushion:last-child',
+    'cat:nth-child(even), cat:nth-child(2n)',
+    'cat:nth-child(odd):not(:last-child), cat:nth-child(4)',
 ];
 
 export const tasks: object[] = [
@@ -64,6 +66,20 @@ export const tasks: object[] = [
         examples:
             'Rules below selector <span class="selector">element:first-child</span> will apply to the first element the same nesting.',
     },
+    {
+        title: 'Nth-child',
+        rules:
+            'As well as you can pount on the first and the lasl elements, you can make browser to count them. For this goal use pseudo-class <span class="selector">:nth-child(n)</span>, where "n" - is digit.',
+        examples:
+            'For example, rules below selector <span class="selector">element:nth-of-child(3)</span> will apply to the third element in parent, <span class="selector">element:nth-child(3n) </span> to every third element and etc. By the same way work pseudo-classes el:nth-child(odd) and el:nth-child(even)',
+    },
+    {
+        title: ':not-selector',
+        rules:
+            'All this task we learn to point on different selectors, but you can also exclude elements, if you want. Use <span class="selector">:not(selector)</span> for this goal.',
+        examples:
+            'For example, rules below selector <span class="selector">.my-class:not(.other-class)</span> will apply to all elements with "my-class", exept elements with "other-class" simultaniously.',
+    },
 ];
 
 export const codes: object[] = [
@@ -98,6 +114,14 @@ export const codes: object[] = [
     {
         code:
             '<div class="tag">&lt;coushion /&gt;</div><div class="tag">&lt;cushion /&gt;</div><div class="tag">&lt;cushion class="cushion" /&gt;</div>',
+    },
+    {
+        code:
+            '<div class="tag">&lt;cat class="ginger" /&gt;</div> <div class="tag">&lt;cat class="black"/&gt;</div><div class="tag">&lt;cat class="gray"/&gt;</div><div class="tag">&lt;cat class="ginger" /&gt;</div><div class="tag">&lt;cat class="black"/&gt;</div>',
+    },
+    {
+        code:
+            '<div class="tag">&lt;cat class="ginger" /&gt;</div> <div class="tag">&lt;cat class="black"/&gt;</div><div class="tag">&lt;cat class="gray"/&gt;</div><div class="tag">&lt;cat class="ginger" /&gt;</div><div class="tag">&lt;cat class="black"/&gt;</div>',
     },
 ];
 
@@ -140,6 +164,16 @@ export const layouts: object[] = [
     {
         title: 'Choose the first and the last cushion!',
         code:
-            '<div class="el"><img class="cat active" src="./assets/img/cushion.png" alt="" width="auto" height="200px"></div><div class="el"><img class="cat" src="./assets/img/cushion.png" alt="" width="auto" height="200px"></div><div class="el"><img class="cat active" src="./assets/img/cushion.png" alt="" width="auto" height="200px"></div>',
+            '<div class="el"><img class="cat active" src="./assets/img/cushion.png" alt="" width="auto" height="200"></div><div class="el"><img class="cat" src="./assets/img/cushion.png" alt="" width="auto" height="200px"></div><div class="el"><img class="cat active" src="./assets/img/cushion.png" alt="" width="auto" height="200px"></div>',
+    },
+    {
+        title: 'Choose the second and fourth cat!',
+        code:
+            '<div class="el"><img class="cat" src="./assets/img/ginger.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat active" src="./assets/img/black.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat" src="./assets/img/gray.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat active" src="./assets/img/ginger.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat" src="./assets/img/black.png" alt="" width="auto" height="120"></div>',
+    },
+    {
+        title: 'Choose odd cats and the forth, exept the last one!',
+        code:
+            '<div class="el"><img class="cat active" src="./assets/img/ginger.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat" src="./assets/img/black.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat active" src="./assets/img/gray.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat active" src="./assets/img/ginger.png" alt="" width="auto" height="120"></div><div class="el"><img class="cat" src="./assets/img/black.png" alt="" width="auto" height="120"></div>',
     },
 ];

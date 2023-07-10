@@ -1,11 +1,9 @@
-type answear = string | string[];
-
-export const answears: answear[] = [
+export const answears: string[] = [
     'cat',
     '.gray',
-    ['cushion, .ginger', '.ginger, cushion'],
+    'cushion, .ginger .ginger, cushion',
     'cat.gray',
-    ['cushion cat', 'cushion > cat'],
+    'cushion cat cushion > cat',
 ];
 
 export const tasks: object[] = [
@@ -54,7 +52,7 @@ export const tasks: object[] = [
 export const codes: object[] = [
     {
         code:
-            '<div class="tag">&lt;cat /&gt;</div><div class="tag">&lt;cat /&gt;</div><div class="tag">&lt;cat /&gt;</div>',
+            '<div class="tag">&lt;cat /&gt;</div><div class="tag">&lt;cat /&gt;</div><div class="tag">&lt;cushion /&gt;</div>',
     },
     {
         code:

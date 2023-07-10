@@ -27,11 +27,11 @@ export default class Game {
 
         this.levels[this.currentLevel].classList.add('current');
         this.okBtn?.addEventListener('click', () => this.checkAnswear());
-        /*  document.addEventListener('keyup', function (event) {
-        if (event.code === 'Enter') {
-            checkAnswear();
-        }
-    });  */
+        document.addEventListener('keyup', (event) => {
+            if (event.code === 'Enter') {
+                this.checkAnswear();
+            }
+        });
     }
 
     init(currentLevel: number): void {
@@ -69,18 +69,14 @@ export default class Game {
                 //interactivity();
             }, 1500);
         } else {
-            /* this.el.forEach((element) => {
-                if (!this.input) throw TypeError;
-
-                element.classList.add('shake');
-                this.input.value = '';
-                setTimeout(() => {
-                    element.classList.remove('shake');
-                }, 1500);
-                
-            }) */
-            console.log(this.answearsArr[this.currentLevel], false);
+            this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('shake'));
+            this.input.value = '';
+            setTimeout(() => {
+                if (!this.layout) throw TypeError;
+                this.layout.querySelectorAll('.el').forEach((element): void => element.classList.remove('shake'));
+            }, 1500);
         }
+        console.log(this.answearsArr[this.currentLevel], false);
     }
 }
 

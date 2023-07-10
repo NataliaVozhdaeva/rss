@@ -61,17 +61,38 @@ export default class Game {
             this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('disappear'));
             this.levels[this.currentLevel].classList.remove('current');
             this.levels[this.currentLevel].classList.add('done');
-            this.currentLevel += 1;
-            this.levels[this.currentLevel].classList.add('current');
+            if (this.currentLevel === this.levels.length - 1) {
+                const popupWin = document.querySelector<HTMLElement>('.congrats');
+                if (!popupWin) throw TypeError;
+                popupWin.style.display = 'flex';
 
-            setTimeout(() => {
-                if (!this.htmlEditor || !this.layout || !this.taskContainer) throw TypeError;
+                const darkDiv = document.querySelector<HTMLElement>('.modal');
+                darkDiv?.classList.add('dark');
 
+                if (!this.htmlEditor || !this.taskContainer) throw TypeError;
                 this.htmlEditor.innerHTML = '';
                 this.layout.innerHTML = '';
                 this.taskContainer.innerHTML = '';
-                this.init(this.currentLevel);
-            }, 1500);
+
+                const close = document.querySelector<HTMLElement>('.close');
+                if (!close) throw TypeError;
+
+                close.addEventListener('click', () => {
+                    popupWin.style.display = 'none';
+                    darkDiv?.classList.remove('dark');
+                });
+            } else {
+                this.currentLevel += 1;
+                this.levels[this.currentLevel].classList.add('current');
+                setTimeout(() => {
+                    if (!this.htmlEditor || !this.layout || !this.taskContainer) throw TypeError;
+
+                    this.htmlEditor.innerHTML = '';
+                    this.layout.innerHTML = '';
+                    this.taskContainer.innerHTML = '';
+                    this.init(this.currentLevel);
+                }, 1500);
+            }
         } else {
             this.layout.querySelectorAll('.el').forEach((element): void => element.classList.add('shake'));
             //код 76 строки повторяет 61-ую (кроме имени класса). Кажется, что так быть не должно.
